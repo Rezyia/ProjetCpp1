@@ -1,0 +1,21 @@
+﻿  CMatrice.cpp
+c:\users\dylan\desktop\polytech\s6\oriente_objet\git\projetcpp1\projetcpp1\projetcpp1\cmatrice.h(7): error C2087: 'MATTableau' : indice manquant
+  c:\users\dylan\desktop\polytech\s6\oriente_objet\git\projetcpp1\projetcpp1\projetcpp1\cmatrice.cpp(7): note: voir la référence à l'instanciation de classe modèle 'CMatrice<Type>' en cours de compilation
+c:\users\dylan\desktop\polytech\s6\oriente_objet\git\projetcpp1\projetcpp1\projetcpp1\cmatrice.h(7): error C2079: 'CMatrice<Type>::MATTableau' utilise une class de 'Type' non défini
+c:\users\dylan\desktop\polytech\s6\oriente_objet\git\projetcpp1\projetcpp1\projetcpp1\cmatrice.cpp(7): warning C4812: style de déclaration obsolète : utilisez 'CMatrice<Type>::CMatrice' à la place
+c:\users\dylan\desktop\polytech\s6\oriente_objet\git\projetcpp1\projetcpp1\projetcpp1\cmatrice.cpp(11): warning C4812: style de déclaration obsolète : utilisez 'CMatrice<Type>::CMatrice' à la place
+c:\users\dylan\desktop\polytech\s6\oriente_objet\git\projetcpp1\projetcpp1\projetcpp1\cmatrice.cpp(28): error C2027: utilisation du type non défini 'Type'
+  c:\users\dylan\desktop\polytech\s6\oriente_objet\git\projetcpp1\projetcpp1\projetcpp1\cmatrice.cpp(7): note: voir la déclaration de 'Type'
+c:\users\dylan\desktop\polytech\s6\oriente_objet\git\projetcpp1\projetcpp1\projetcpp1\cmatrice.cpp(28): error C2664: 'void CMatrice<Type>::MATModifierVal(Type,unsigned int,unsigned int)' : impossible de convertir l'argument 1 de 'Type' en 'Type'
+          with
+          [
+              Type=Type
+          ]
+  c:\users\dylan\desktop\polytech\s6\oriente_objet\git\projetcpp1\projetcpp1\projetcpp1\cmatrice.cpp(28): note: utilisation du type non défini 'Type'
+  c:\users\dylan\desktop\polytech\s6\oriente_objet\git\projetcpp1\projetcpp1\projetcpp1\cmatrice.cpp(7): note: voir la déclaration de 'Type'
+c:\users\dylan\desktop\polytech\s6\oriente_objet\git\projetcpp1\projetcpp1\projetcpp1\cmatrice.cpp(39): error C2109: un indice requiert un type tableau ou pointeur
+c:\users\dylan\desktop\polytech\s6\oriente_objet\git\projetcpp1\projetcpp1\projetcpp1\cmatrice.cpp(39): warning C4473: 'printf' : nombre insuffisant d'arguments passés pour la chaîne de format
+  c:\users\dylan\desktop\polytech\s6\oriente_objet\git\projetcpp1\projetcpp1\projetcpp1\cmatrice.cpp(39): note: les espaces réservés et leurs paramètres attendent des arguments 1 variadiques, mais des arguments 0 ont été fournis
+  c:\users\dylan\desktop\polytech\s6\oriente_objet\git\projetcpp1\projetcpp1\projetcpp1\cmatrice.cpp(39): note: l'argument variadique manquant 1 est demandé par la chaîne de format '%d'
+  ProjetCpp1.cpp
+  Génération de code en cours...

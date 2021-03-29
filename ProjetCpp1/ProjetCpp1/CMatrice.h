@@ -14,6 +14,7 @@ public:
 
 	void MATModifierNbreLignes(unsigned int uiArg) {
 		uiMATNbreLignes = uiArg;
+		//TODO - réalloué MATTableau
 	}
 
 	unsigned int MATLireNbreLignes() {
@@ -22,6 +23,7 @@ public:
 
 	void MATModifierNbreColonne(unsigned int uiArg) {
 		uiMATNbreColonnes = uiArg;
+		//TODO - réalloué MATTableau
 	}
 
 	unsigned int MATLireNbreColonne() {
