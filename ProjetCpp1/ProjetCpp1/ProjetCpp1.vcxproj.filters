@@ -18,5 +18,13 @@
     <ClCompile Include="ProjetCpp1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CMatrice.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CMatrice.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
