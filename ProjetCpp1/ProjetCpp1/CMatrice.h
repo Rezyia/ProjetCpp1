@@ -6,9 +6,33 @@ private:
 	unsigned int uiMATNbreColonnes;
 	Type MATTableau[][];
 public:
-	CMatrice();
-	CMatrice(CMatrice MATarg);
-	~CMatrice();
-	CMatrice MATTransposer();
+	CMatrice<Type>();
+	CMatrice<Type>(CMatrice<Type>* MATarg);
+	~CMatrice<Type>();
+	CMatrice<Type> MATTransposer();
 	void MATAfficher();
+
+	void MATModifierNbreLignes(unsigned int uiArg) {
+		uiMATNbreLignes = uiArg;
+	}
+
+	unsigned int MATLireNbreLignes() {
+		return uiMATNbreLignes;
+	}
+
+	void MATModifierNbreColonne(unsigned int uiArg) {
+		uiMATNbreColonnes = uiArg;
+	}
+
+	unsigned int MATLireNbreColonne() {
+		return uiMATNbreColonnes;
+	}
+
+	void MATModifierVal(Type valArg, unsigned int uiNumCol, unsigned int uiNumLig){
+		MATTableau[uiNumCol][uiNumLig] = valArg;
+	}
+
+	Type MATLireVal(unsigned int uiNumCol, unsigned int uiNumLig) {
+		return MATTableau[uiNumCol][uiNumLig];
+	}
 };
