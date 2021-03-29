@@ -152,10 +152,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CMatrice.cpp" />
+    <ClCompile Include="CMatriceOperation.cpp" />
     <ClCompile Include="ProjetCpp1.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMatrice.h" />
+    <ClInclude Include="CMatriceOperation.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

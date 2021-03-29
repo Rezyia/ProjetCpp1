@@ -4,21 +4,25 @@
 #define NBRE_LIGNES_BASE 2
 #define NBRE_COLONNE_BASE 2
 
-CMatrice<class Type>::CMatrice<Type>() {
+template <class Type>
+CMatrice<Type>::CMatrice() {
 	//TODO
-	// 1 - initialiser le nombres de lignes et de colonnes à NBRE_LIGNES_BASE et NBRE_COLONNE_BASE
+	// 1 - initialiser le nombres de lignes et de colonnes ï¿½ NBRE_LIGNES_BASE et NBRE_COLONNE_BASE
 	// 2 - initialiser MATTableau
 }
 
-CMatrice<Type>::CMatrice<Type>(CMatrice<Type> *MATarg) {
+template <class Type>
+CMatrice<Type>::CMatrice(CMatrice<Type> *MATarg) {
 
 }
 
-CMatrice<Type>::~CMatrice<Type>() {
+template <class Type>
+CMatrice<Type>::~CMatrice() {
 
 }
 
-//Fonction pour obtenir la transposé d'une matrice quelconque
+//Fonction pour obtenir la transposï¿½ d'une matrice quelconque
+template <class Type>
 CMatrice<Type> CMatrice<Type>::MATTransposer() {
 	CMatrice<Type> *MATtmp = new CMatrice<Type>();
 	MATtmp->MATModifierNbreColonne(MATLireNbreLignes());
@@ -34,12 +38,13 @@ CMatrice<Type> CMatrice<Type>::MATTransposer() {
 }
 
 //Fonction pour afficher une matrice
+template <class Type>
 void CMatrice<Type>::MATAfficher() {
 	unsigned int iBoucle, jBoucle;
 	for (iBoucle = 0; iBoucle < uiMATNbreColonnes; iBoucle++) {
 		for (jBoucle = 0; jBoucle < uiMATNbreLignes; jBoucle++) {
-			printf("%d ", MATLireVal(iBoucle, jBoucle));
+			std::cout << MATLireVal(iBoucle, jBoucle) << " ";
 		}
-		printf("\n");
+		std::cout << "\n";
 	}
 }
