@@ -1,5 +1,21 @@
-﻿  CMatriceOperation.cpp
-  ProjetCpp1.cpp
-c:\users\rezyia\desktop\files\etudes\polytech\di3\projet2c++\projetcpp1\projetcpp1\projetcpp1\projetcpp1.cpp(9): warning C4930: 'CMatriceOperation<int> mat1(void)': prototyped function not called (was a variable definition intended?)
+﻿  CMatrice.cpp
+  CMatriceOperation.cpp
+c:\users\rezyia\desktop\files\etudes\polytech\di3\projet2c++\projetcpp1\projetcpp1\projetcpp1\cmatriceoperation.cpp(30): error C2065: 'MATLireNbreLignes': undeclared identifier
+c:\users\rezyia\desktop\files\etudes\polytech\di3\projet2c++\projetcpp1\projetcpp1\projetcpp1\cmatriceoperation.cpp(30): error C3861: 'MATLireNbreLignes': identifier not found
+  c:\users\rezyia\desktop\files\etudes\polytech\di3\projet2c++\projetcpp1\projetcpp1\projetcpp1\cmatriceoperation.cpp(30): note: 'MATLireNbreLignes': function declaration must be available as none of the arguments depend on a template parameter
+c:\users\rezyia\desktop\files\etudes\polytech\di3\projet2c++\projetcpp1\projetcpp1\projetcpp1\cmatriceoperation.cpp(31): error C2065: 'MATLireNbreColonnes': undeclared identifier
+c:\users\rezyia\desktop\files\etudes\polytech\di3\projet2c++\projetcpp1\projetcpp1\projetcpp1\cmatriceoperation.cpp(31): error C3861: 'MATLireNbreColonnes': identifier not found
+  c:\users\rezyia\desktop\files\etudes\polytech\di3\projet2c++\projetcpp1\projetcpp1\projetcpp1\cmatriceoperation.cpp(31): note: 'MATLireNbreColonnes': function declaration must be available as none of the arguments depend on a template parameter
+c:\users\rezyia\desktop\files\etudes\polytech\di3\projet2c++\projetcpp1\projetcpp1\projetcpp1\cmatriceoperation.cpp(39): error C2065: 'MATLireVal': undeclared identifier
+c:\users\rezyia\desktop\files\etudes\polytech\di3\projet2c++\projetcpp1\projetcpp1\projetcpp1\cmatriceoperation.cpp(39): error C3861: 'MATLireVal': identifier not found
+  c:\users\rezyia\desktop\files\etudes\polytech\di3\projet2c++\projetcpp1\projetcpp1\projetcpp1\cmatriceoperation.cpp(39): note: 'MATLireVal': function declaration must be available as none of the arguments depend on a template parameter
+c:\users\rezyia\desktop\files\etudes\polytech\di3\projet2c++\projetcpp1\projetcpp1\projetcpp1\cmatriceoperation.cpp(49): error C2065: 'MATLireNbreLignes': undeclared identifier
+c:\users\rezyia\desktop\files\etudes\polytech\di3\projet2c++\projetcpp1\projetcpp1\projetcpp1\cmatriceoperation.cpp(49): error C3861: 'MATLireNbreLignes': identifier not found
+  c:\users\rezyia\desktop\files\etudes\polytech\di3\projet2c++\projetcpp1\projetcpp1\projetcpp1\cmatriceoperation.cpp(49): note: 'MATLireNbreLignes': function declaration must be available as none of the arguments depend on a template parameter
+c:\users\rezyia\desktop\files\etudes\polytech\di3\projet2c++\projetcpp1\projetcpp1\projetcpp1\cmatriceoperation.cpp(50): error C2065: 'MATLireNbreColonnes': undeclared identifier
+c:\users\rezyia\desktop\files\etudes\polytech\di3\projet2c++\projetcpp1\projetcpp1\projetcpp1\cmatriceoperation.cpp(50): error C3861: 'MATLireNbreColonnes': identifier not found
+  c:\users\rezyia\desktop\files\etudes\polytech\di3\projet2c++\projetcpp1\projetcpp1\projetcpp1\cmatriceoperation.cpp(50): note: 'MATLireNbreColonnes': function declaration must be available as none of the arguments depend on a template parameter
+c:\users\rezyia\desktop\files\etudes\polytech\di3\projet2c++\projetcpp1\projetcpp1\projetcpp1\cmatriceoperation.cpp(58): error C2065: 'MATLireVal': undeclared identifier
+c:\users\rezyia\desktop\files\etudes\polytech\di3\projet2c++\projetcpp1\projetcpp1\projetcpp1\cmatriceoperation.cpp(58): error C3861: 'MATLireVal': identifier not found
+  c:\users\rezyia\desktop\files\etudes\polytech\di3\projet2c++\projetcpp1\projetcpp1\projetcpp1\cmatriceoperation.cpp(58): note: 'MATLireVal': function declaration must be available as none of the arguments depend on a template parameter
   Generating Code...
-  ProjetCpp1.vcxproj -> C:\Users\rezyia\Desktop\Files\Etudes\Polytech\DI3\Projet2c++\ProjetCpp1\ProjetCpp1\Debug\ProjetCpp1.exe

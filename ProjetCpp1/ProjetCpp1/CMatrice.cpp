@@ -2,13 +2,13 @@
 #include <stdio.h>
 
 #define NBRE_LIGNES_BASE 2
-#define NBRE_COLONNE_BASE 2
+#define NBRE_COLONNES_BASE 2
 
 template <class Type>
 CMatrice<Type>::CMatrice() {
-	uiMATNbreColonnes = 2;
-	uiMATNbreLignes = 2;
-	MATTableau = (Type*)malloc(sizeof(Type) * 2 * 2);
+	uiMATNbreColonnes = NBRE_COLONNES_BASE;
+	uiMATNbreLignes = NBRE_LIGNES_BASE;
+	MATTableau = (Type*)malloc(sizeof(Type) * NBRE_COLONNES_BASE * NBRE_LIGNES_BASE);
 }
 
 template <class Type>
@@ -33,7 +33,7 @@ template <class Type>
 CMatrice<Type> CMatrice<Type>::MATTransposer() {
 	CMatrice<Type> *MATtmp = new CMatrice<Type>();
 	MATtmp->MATModifierNbreColonne(MATLireNbreLignes());
-	MATtmp->MATModifierNbreLignes(MATLireNbreColonne());
+	MATtmp->MATModifierNbreLignes(MATLireNbreColonnes());
 	unsigned int iBoucle, jBoucle;
 	for (iBoucle = 0; iBoucle < uiMATNbreColonnes; iBoucle++) {
 		for (jBoucle = 0; jBoucle < uiMATNbreLignes; jBoucle++) {
@@ -54,4 +54,54 @@ void CMatrice<Type>::MATAfficher() {
 		}
 		std::cout << "\n";
 	}
+}
+
+
+template <class Type>
+void CMatrice<Type>::MATModifierNbreLignes(unsigned int uiArg) {
+	Type* newMat = malloc(typeof(Type) * uiMATNbreColonnes* uiArg); // Allocation nouvelle matrice
+
+	// Initialisation nouvelle matrice par des 0 :
+	for (int i = 0; i < uiArg; i++) {
+		for (int j = 0; j < uiMATNbreColonnes; j++) {
+			newMat[i][j] = 0;
+		}
+	}
+
+	// Copie de MATTableau dans newMat :
+	for (int i = 0; i < std::min(uiArg, uiMATNbreLignes); i++) {
+		for (int j = 0; j < uiMATNbreColonnes; j++) {
+			newMat[i][j] = MATTableau[i][j];
+		}
+	}
+
+	uiMATNbreLignes = uiArg;
+
+	free(MATTableau);
+	MATTableau = newMat;
+}
+
+
+template <class Type>
+void CMatrice<Type>::MATModifierNbreColonnes(unsigned int uiArg) {
+	Type* newMat = malloc(typeof(Type) * uiMATNbreColonnes* uiArg); // Allocation nouvelle matrice
+
+	// Initialisation nouvelle matrice par des 0 :
+	for (int i = 0; i < uiArg; i++) {
+		for (int j = 0; j < uiMATNbreColonnes; j++) {
+			newMat[i][j] = 0;
+		}
+	}
+
+	// Copie de MATTableau dans newMat :
+	for (int i = 0; i < uiMATNbreLignes; i++) {
+		for (int j = 0; j < std::min(uiArg, uiMATNbreColonnes); j++) {
+			newMat[i][j] = MATTableau[i][j];
+		}
+	}
+
+	uiMATNbreColonnes = uiArg;
+
+	free(MATTableau);
+	MATTableau = newMat;
 }
