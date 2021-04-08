@@ -10,6 +10,7 @@ public:
 	// Constructeur:
 	CMatriceOperation<Type>();
 
+
 	// Autres méthodes :
 	CMatriceOperation<Type> operator+(CMatriceOperation<Type> MAOArg);
 	CMatriceOperation<Type> operator-(CMatriceOperation<Type> MAOArg);

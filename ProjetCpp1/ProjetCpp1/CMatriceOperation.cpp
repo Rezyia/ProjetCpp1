@@ -27,8 +27,8 @@ template<class Type>
 CMatriceOperation<Type> CMatriceOperation<Type>::operator*(Type varArg)
 {
 	CMatriceOperation<Type> MAOresult = new CMatriceOperation<Type>();
-	unsigned int uiNbLignes = MATLireNbreLignes();
-	unsigned int uiNbColonnes = MATLireNbreColonnes();
+	unsigned int uiNbLignes = this->MATLireNbreLignes();
+	unsigned int uiNbColonnes = this->MATLireNbreColonnes();
 	MAOresult.MATModifierNbreColonnes(uiNbColonnes);
 	MAOresult.MATModifierNbreLignes(uiNbLignes);
 
@@ -36,7 +36,7 @@ CMatriceOperation<Type> CMatriceOperation<Type>::operator*(Type varArg)
 	int jBoucleColonne;
 	for (jBoucleColonne = 0; jBoucleColonne < uiNbColonnes; jBoucleColonne++) {
 		for (iBoucleLigne = 0; iBoucleLigne < uiNbLignes; iBoucleLigne++) {
-			MAOresult.MATModifierVal(MATLireVal(jBoucleColonne, iBoucleLigne)*varArg, jBoucleColonne, iBoucleLigne);
+			MAOresult.MATModifierVal(this->MATLireVal(jBoucleColonne, iBoucleLigne)*varArg, jBoucleColonne, iBoucleLigne);
 		}
 	}
 	return MAOresult;
@@ -46,8 +46,8 @@ template<class Type>
 CMatriceOperation<Type> CMatriceOperation<Type>::operator/(Type varArg)
 {
 	CMatriceOperation<Type> MAOresult = new CMatriceOperation<Type>();
-	unsigned int uiNbLignes = MATLireNbreLignes();
-	unsigned int uiNbColonnes = MATLireNbreColonnes();
+	unsigned int uiNbLignes = this->MATLireNbreLignes();
+	unsigned int uiNbColonnes = this->MATLireNbreColonnes();
 	MAOresult.MATModifierNbreColonnes(uiNbColonnes);
 	MAOresult.MATModifierNbreLignes(uiNbLignes);
 
@@ -55,7 +55,7 @@ CMatriceOperation<Type> CMatriceOperation<Type>::operator/(Type varArg)
 	int jBoucleColonne;
 	for (jBoucleColonne = 0; jBoucleColonne < uiNbColonnes; jBoucleColonne++) {
 		for (iBoucleLigne = 0; iBoucleLigne < uiNbLignes; iBoucleLigne++) {
-			MAOresult.MATModifierVal(MATLireVal(jBoucleColonne, iBoucleLigne)/varArg, jBoucleColonne, iBoucleLigne);
+			MAOresult.MATModifierVal(this->MATLireVal(jBoucleColonne, iBoucleLigne)/varArg, jBoucleColonne, iBoucleLigne);
 		}
 	}
 	return MAOresult;

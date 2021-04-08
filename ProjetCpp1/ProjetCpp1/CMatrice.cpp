@@ -4,18 +4,24 @@
 #define NBRE_LIGNES_BASE 2
 #define NBRE_COLONNES_BASE 2
 
+// Constructeur par defaut
 template <class Type>
-CMatrice<Type>::CMatrice() {
+CMatrice<Type>::CMatrice() { 
 	uiMATNbreColonnes = NBRE_COLONNES_BASE;
 	uiMATNbreLignes = NBRE_LIGNES_BASE;
 	MATTableau = (Type*)malloc(sizeof(Type) * NBRE_COLONNES_BASE * NBRE_LIGNES_BASE);
 }
 
+// Constructeur a partir d'un fichier
 template <class Type>
 CMatrice<Type>::CMatrice(CMatrice<Type> *MATarg) {
-	
+	// WIP / To change :
+	uiMATNbreColonnes = NBRE_COLONNES_BASE;
+	uiMATNbreLignes = NBRE_LIGNES_BASE;
+	MATTableau = (Type*)malloc(sizeof(Type) * NBRE_COLONNES_BASE * NBRE_LIGNES_BASE);
 }
 
+// Constructeur avec dimensions
 template <class Type>
 CMatrice<Type>::CMatrice(unsigned int nbCol, unsigned int nbRow) { // test constructeur custom sizes
 	uiMATNbreColonnes = nbCol;
@@ -23,6 +29,7 @@ CMatrice<Type>::CMatrice(unsigned int nbCol, unsigned int nbRow) { // test const
 	MATTableau = (Type*)malloc(sizeof(Type) * nbCol * nbRow);
 }
 
+// Destructeur
 template <class Type>
 CMatrice<Type>::~CMatrice() {
 	free(MATTableau);
@@ -46,7 +53,8 @@ CMatrice<Type> CMatrice<Type>::MATTransposer() {
 
 //Fonction pour afficher une matrice
 template <class Type>
-void CMatrice<Type>::MATAfficher() {
+void CMatrice<Type>::MATAfficher() 
+{
 	unsigned int iBoucle, jBoucle;
 	for (iBoucle = 0; iBoucle < uiMATNbreColonnes; iBoucle++) {
 		for (jBoucle = 0; jBoucle < uiMATNbreLignes; jBoucle++) {
@@ -57,6 +65,7 @@ void CMatrice<Type>::MATAfficher() {
 }
 
 
+// Fonction pour modifier le nombre de lignes de la matrice
 template <class Type>
 void CMatrice<Type>::MATModifierNbreLignes(unsigned int uiArg) {
 	Type* newMat = malloc(typeof(Type) * uiMATNbreColonnes* uiArg); // Allocation nouvelle matrice
@@ -81,7 +90,7 @@ void CMatrice<Type>::MATModifierNbreLignes(unsigned int uiArg) {
 	MATTableau = newMat;
 }
 
-
+// Fonction pour modifier le nombre de colonnes de la matrice
 template <class Type>
 void CMatrice<Type>::MATModifierNbreColonnes(unsigned int uiArg) {
 	Type* newMat = malloc(typeof(Type) * uiMATNbreColonnes* uiArg); // Allocation nouvelle matrice

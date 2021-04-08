@@ -3,10 +3,14 @@
 
 #include <iostream>
 #include "CMatriceOperation.h"
+#include "CMatrice.h"
 
 int main()
 {
-	CMatriceOperation<int> mat1();
+	CMatriceOperation<int>* mat1 = new CMatriceOperation<int>();
+	mat1->MATAfficher();
+	
+	return 0;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

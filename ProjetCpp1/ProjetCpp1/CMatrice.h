@@ -8,10 +8,11 @@ private:
 public:
 	CMatrice<Type>();
 	CMatrice<Type>(CMatrice<Type>* MATarg);
-	CMatrice<Type>(unsigned int length, unsigned int height);
+	CMatrice<Type>(unsigned int nbCol, unsigned int nbRow);
 	~CMatrice<Type>();
 	CMatrice<Type> MATTransposer();
 	void MATAfficher();
+
 
 	void MATModifierNbreLignes(unsigned int uiArg);
 	void MATModifierNbreColonnes(unsigned int uiArg);
