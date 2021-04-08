@@ -6,19 +6,26 @@
 
 template <class Type>
 CMatrice<Type>::CMatrice() {
-	//TODO
-	// 1 - initialiser le nombres de lignes et de colonnes � NBRE_LIGNES_BASE et NBRE_COLONNE_BASE
-	// 2 - initialiser MATTableau
+	uiMATNbreColonnes = 2;
+	uiMATNbreLignes = 2;
+	MATTableau = (Type*)malloc(sizeof(Type) * 2 * 2);
 }
 
 template <class Type>
 CMatrice<Type>::CMatrice(CMatrice<Type> *MATarg) {
+	
+}
 
+template <class Type>
+CMatrice<Type>::CMatrice(unsigned int nbCol, unsigned int nbRow) { // test constructeur custom sizes
+	uiMATNbreColonnes = nbCol;
+	uiMATNbreLignes = nbRow;
+	MATTableau = (Type*)malloc(sizeof(Type) * nbCol * nbRow);
 }
 
 template <class Type>
 CMatrice<Type>::~CMatrice() {
-
+	free(MATTableau);
 }
 
 //Fonction pour obtenir la transpos� d'une matrice quelconque
