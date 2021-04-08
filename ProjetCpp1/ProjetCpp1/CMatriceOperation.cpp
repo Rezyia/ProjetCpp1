@@ -48,7 +48,7 @@ CMatriceOperation<Type> CMatriceOperation<Type>::operator/(Type varArg)
 	CMatriceOperation<Type> MAOresult = new CMatriceOperation<Type>();
 	unsigned int uiNbLignes = MATLireNbreLignes();
 	unsigned int uiNbColonnes = MATLireNbreColonnes();
-	MAOresult.MATModifierNbreColonne(uiNbColonnes);
+	MAOresult.MATModifierNbreColonnes(uiNbColonnes);
 	MAOresult.MATModifierNbreLignes(uiNbLignes);
 
 	int iBoucleLigne;

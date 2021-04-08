@@ -32,7 +32,7 @@ CMatrice<Type>::~CMatrice() {
 template <class Type>
 CMatrice<Type> CMatrice<Type>::MATTransposer() {
 	CMatrice<Type> *MATtmp = new CMatrice<Type>();
-	MATtmp->MATModifierNbreColonne(MATLireNbreLignes());
+	MATtmp->MATModifierNbreColonnes(MATLireNbreLignes());
 	MATtmp->MATModifierNbreLignes(MATLireNbreColonnes());
 	unsigned int iBoucle, jBoucle;
 	for (iBoucle = 0; iBoucle < uiMATNbreColonnes; iBoucle++) {

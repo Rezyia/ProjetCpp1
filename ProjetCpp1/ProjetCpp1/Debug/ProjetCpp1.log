@@ -18,4 +18,6 @@ c:\users\rezyia\desktop\files\etudes\polytech\di3\projet2c++\projetcpp1\projetcp
 c:\users\rezyia\desktop\files\etudes\polytech\di3\projet2c++\projetcpp1\projetcpp1\projetcpp1\cmatriceoperation.cpp(58): error C2065: 'MATLireVal': undeclared identifier
 c:\users\rezyia\desktop\files\etudes\polytech\di3\projet2c++\projetcpp1\projetcpp1\projetcpp1\cmatriceoperation.cpp(58): error C3861: 'MATLireVal': identifier not found
   c:\users\rezyia\desktop\files\etudes\polytech\di3\projet2c++\projetcpp1\projetcpp1\projetcpp1\cmatriceoperation.cpp(58): note: 'MATLireVal': function declaration must be available as none of the arguments depend on a template parameter
+  ProjetCpp1.cpp
+c:\users\rezyia\desktop\files\etudes\polytech\di3\projet2c++\projetcpp1\projetcpp1\projetcpp1\projetcpp1.cpp(9): warning C4930: 'CMatriceOperation<int> mat1(void)': prototyped function not called (was a variable definition intended?)
   Generating Code...
