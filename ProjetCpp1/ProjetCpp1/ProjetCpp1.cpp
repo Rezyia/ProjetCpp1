@@ -7,8 +7,9 @@
 
 int main()
 {
-	CMatriceOperation<int>* mat1 = new CMatriceOperation<int>();
-	mat1->MATAfficher();
+	std::cout << "Programme compilé, exécution :\n";
+	//CMatriceOperation<int>* mat1 = new CMatriceOperation<int>();
+	//mat1->MATAfficher();
 	
 	return 0;
 }

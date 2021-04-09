@@ -1,7 +1,2 @@
-﻿  CMatrice.cpp
-  CMatriceOperation.cpp
-  ProjetCpp1.cpp
-  Génération de code en cours...
-ProjetCpp1.obj : error LNK2019: symbole externe non résolu "public: void __thiscall CMatrice<int>::MATAfficher(void)" (?MATAfficher@?$CMatrice@H@@QAEXXZ) référencé dans la fonction _main
-ProjetCpp1.obj : error LNK2019: symbole externe non résolu "public: __thiscall CMatriceOperation<int>::CMatriceOperation<int>(void)" (??0?$CMatriceOperation@H@@QAE@XZ) référencé dans la fonction _main
-C:\Users\dylan\Desktop\Polytech\S6\Oriente_objet\git\ProjetCpp1\ProjetCpp1\Debug\ProjetCpp1.exe : fatal error LNK1120: 2 externes non résolus
+﻿  CMatriceOperation.cpp
+  ProjetCpp1.vcxproj -> C:\Users\rezyia\Desktop\Files\Etudes\Polytech\DI3\Projet2c++\ProjetCpp1\ProjetCpp1\Debug\ProjetCpp1.exe
