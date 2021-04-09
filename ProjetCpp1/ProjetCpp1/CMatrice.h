@@ -9,6 +9,7 @@ public:
 	CMatrice<Type>();
 	CMatrice<Type>(CMatrice<Type>* MATarg);
 	CMatrice<Type>(unsigned int nbCol, unsigned int nbRow);
+	CMatrice<Type>(char* pcNomFichier);
 	~CMatrice<Type>();
 	CMatrice<Type> MATTransposer();
 	void MATAfficher();

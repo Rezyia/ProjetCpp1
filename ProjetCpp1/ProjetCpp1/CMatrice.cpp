@@ -12,7 +12,7 @@ CMatrice<Type>::CMatrice() {
 	MATTableau = (Type*)malloc(sizeof(Type) * NBRE_COLONNES_BASE * NBRE_LIGNES_BASE);
 }
 
-// Constructeur a partir d'un fichier
+// Constructeur de recopie
 template <class Type>
 CMatrice<Type>::CMatrice(CMatrice<Type> *MATarg) {
 	// WIP / To change :
@@ -28,6 +28,14 @@ CMatrice<Type>::CMatrice(unsigned int nbCol, unsigned int nbRow) { // test const
 	uiMATNbreLignes = nbRow;
 	MATTableau = (Type*)malloc(sizeof(Type) * nbCol * nbRow);
 }
+
+// Constructeur depuis un fichier
+template<class Type>
+CMatrice<Type>::CMatrice(char * pcNomFichier)
+{
+}
+
+
 
 // Destructeur
 template <class Type>
