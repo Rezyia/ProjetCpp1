@@ -9,7 +9,8 @@ class CMatriceOperation :
 public:
 	// Constructeur:
 	CMatriceOperation<Type>();
-
+	CMatriceOperation<Type>(CMatriceOperation *MAOcopie);
+	~CMatriceOperation<Type>();
 
 	// Autres méthodes :
 	CMatriceOperation<Type> operator+(CMatriceOperation<Type> MAOArg);

@@ -1,7 +1,18 @@
 #include "CMatriceOperation.h"
+#include "CMatrice.h"
 
 template<class Type>
 CMatriceOperation<Type>::CMatriceOperation()
+{
+}
+
+template<class Type>
+CMatriceOperation<Type>::CMatriceOperation(CMatriceOperation * MAOcopie)
+{
+}
+
+template<class Type>
+CMatriceOperation<Type>::~CMatriceOperation()
 {
 }
 
