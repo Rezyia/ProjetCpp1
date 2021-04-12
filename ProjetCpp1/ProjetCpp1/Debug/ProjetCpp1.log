@@ -1,6 +1,8 @@
 ﻿  CException.cpp
   CMatrice.cpp
+c:\users\rezyia\desktop\files\etudes\polytech\di3\projet2c++\projetcpp1\projetcpp1\projetcpp1\cmatrice.cpp : warning C4335: Mac file format detected: please convert the source file to either DOS or UNIX format
+c:\users\rezyia\desktop\files\etudes\polytech\di3\projet2c++\projetcpp1\projetcpp1\projetcpp1\cmatrice.cpp(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\rezyia\desktop\files\etudes\polytech\di3\projet2c++\projetcpp1\projetcpp1\projetcpp1\cmatrice.cpp(40): error C2760: syntax error: unexpected token 'identifier', expected ';'
   CMatriceOperation.cpp
   ProjetCpp1.cpp
   Generating Code...
-  ProjetCpp1.vcxproj -> C:\Users\rezyia\Desktop\Files\Etudes\Polytech\DI3\Projet2c++\ProjetCpp1\ProjetCpp1\Debug\ProjetCpp1.exe

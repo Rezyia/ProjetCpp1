@@ -1,8 +1,11 @@
+#include <fstream>#include <cstring>#include <stdio.h>
 #include "CMatrice.h"
-#include <stdio.h>
 
 #define NBRE_LIGNES_BASE 2
 #define NBRE_COLONNES_BASE 2
+
+#define NBRE_MAX_CHAMPS_FICHIER 32
+#define NBRE_MAX_LIGNES_FICHIER 255
 
 // Constructeur par defaut
 template <class Type>
@@ -31,10 +34,113 @@ CMatrice<Type>::CMatrice(unsigned int nbCol, unsigned int nbRow) { // test const
 
 // Constructeur depuis un fichier
 template<class Type>
-CMatrice<Type>::CMatrice(char * pcNomFichier)
+CMatrice<Type>::CMatrice(char* pcNomFichier)
 {
 	// Ouverture du fichier :
+	ifstream ifsFichier(pcNomFichier);
+	if (ifsFichier == NULL) {
+		std::cout << "Le fichier n'a pas pu être ouvert\n";
+	}
+	// Si fichier ouvert correctement :
+	else {
+		int iNumChamps = 0;
+		char cLigne[255];
+		ifsFichier >> cLigne;
 
+		int indiceCourrant = 0;
+		int indiceValeurCourrante = 0;
+		char* valeurCourrante[NBRE_MAX_LIGNES_FICHIER - NBRE_MAX_CHAMPS_FICHIER];
+
+
+		/* Prototype d'analyse des champs (abandonné car ordre des champs supposé comme celui des exemples :
+				TypeMatrice, NBLignes, NBColonnes, Matrice)
+		// Analyse du champ : caracteres jusqu'au '=' ou si il rencontre un '\0' ou un '\n'
+		char* champsCourrant[NBRE_MAX_CHAMPS_FICHIER];
+		int indiceChampsCourrant = 0;
+		while (cLigne[indiceCourrant] != '=' && cLigne[indiceCourrant] != '\0' && cLigne[indiceCourrant] != '\n' && indiceChampsCourrant < NBRE_MAX_CHAMPS_FICHIER) {
+			champsCourrant[indiceChampsCourrant] = cLigne[indiceCourrant];
+
+			indiceChampsCourrant++;
+			indiceCourrant++;
+		}
+		champsCourrant[indiceChampsCourrant] = '\0'; // "Fermer" champsCourrant en tant que chaîne de caractères
+		indiceCourrant++; // On passe le '='
+		*/
+
+
+		// On suppose que le format est respecté
+		while (iNumChamps < 4) {
+			//Pour chaque ligne du fichier :
+			indiceCourrant = 0;
+			indiceValeurCourrante = 0;
+
+			// On passe jusqu'aux '=' :
+			while (cLigne[indiceCourrant] != '=' && indiceCourrant < NBRE_MAX_CHAMPS_FICHIER) {
+				if (cLigne[indiceCourrant] != '\0' && cLigne[indiceCourrant] != '\n') // 
+					std::cout << "Erreur : fin de ligne imprévue\n";
+				indiceCourrant++;
+			}
+
+			// Analyse de la valeur :
+			while (cLigne[indiceCourrant] != '\0' && cLigne[indiceCourrant] != '\n' && indiceCourrant < NBRE_MAX_LIGNES_FICHIER) {
+				valeurCourrante[indiceValeurCourrante] = cLigne[indiceCourrant];
+
+				indiceValeurCourrante++;
+				indiceCourrant++;
+			}
+			valeurCourrante[indiceValeurCourrante] = '\0';
+
+			switch (iNumChamps) {
+			// TypeMatrice :
+			case 0:
+				// Ce projet gère UNIQUEMENT le cas où TypeMatrice vaut double, donc :
+				if (strcmp(valeurCourrante, "double") == 0) {
+					this = new CMatrice<double>();
+				}
+				else {
+					std::cout << "Le type de matrice n'a pas été accepté (seul le type double est accepté)\n";
+				}
+				break;
+
+			// NBLignes :
+			case 1:
+				uiMATNbreLignes = atoi(valeurCourrante);
+				break;
+
+			// NBColonnes :
+			case 2:
+				uiMATNbreColonnes = atoi(valeurCourrante);
+				break;
+
+			// Matrice :
+			case 3:
+				MATTableau = malloc(sizeof(double) * uiMATNbreColonnes * uiMATNbreLignes);
+				int lBoucleInitMat = 0;
+				int cBoucleInitMat = 0;
+
+				// Retour à la ligne (début des valeurs) :
+				ifsFichier >> cLigne;
+
+				while (lBoucleInitMat < uiMATNbreLignes) {
+					while (cBoucleInitMat < uiMATNbreColonnes) {
+						MATModifierVal(atoi(cLigne), cBoucleInitMat, lBoucleInitMat);
+						// Passage à la valeur suivante :
+						ifsFichier >> cLigne;
+						if (strcmp(cLigne, "]") == 0) {
+							std::cout << "Erreur: Fin de matrice rencontrée trop tot";
+						}
+						lBoucleInitMat++;
+						cBoucleInitMat++;
+					}
+				}
+				break;
+			}
+
+			// Passage au champs suivant :
+			iNumChamps++;
+			ifsFichier >> cLigne;
+		}
+	}
 }
 
 
