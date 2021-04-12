@@ -42,7 +42,7 @@ CMatriceOperation<Type> CMatriceOperation<Type>::operator+(CMatriceOperation<Typ
 		}
 	}
 	catch (CException EXClevee) {
-		std::cout << "Erreur : " << EXClevee.EXCLireErreur() << ".\n"
+		std::cout << "Erreur : " << EXClevee.EXCLireErreur() << ".\n";
 	}
 }
 

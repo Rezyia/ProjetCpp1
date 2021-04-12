@@ -1,4 +1,6 @@
-#include <fstream>#include <cstring>#include <stdio.h>
+#include <fstream>
+#include <cstring>
+#include <stdio.h>
 #include "CMatrice.h"
 
 #define NBRE_LIGNES_BASE 2
@@ -80,6 +82,8 @@ CMatrice<Type>::CMatrice(char* pcNomFichier)
 					std::cout << "Erreur : fin de ligne imprévue\n";
 				indiceCourrant++;
 			}
+			indiceCourrant++; // Pour passer le '='
+
 
 			// Analyse de la valeur :
 			while (cLigne[indiceCourrant] != '\0' && cLigne[indiceCourrant] != '\n' && indiceCourrant < NBRE_MAX_LIGNES_FICHIER) {
