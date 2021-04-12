@@ -151,11 +151,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CException.cpp" />
     <ClCompile Include="CMatrice.cpp" />
     <ClCompile Include="CMatriceOperation.cpp" />
     <ClCompile Include="ProjetCpp1.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CException.h" />
     <ClInclude Include="CMatrice.h" />
     <ClInclude Include="CMatriceOperation.h" />
   </ItemGroup>

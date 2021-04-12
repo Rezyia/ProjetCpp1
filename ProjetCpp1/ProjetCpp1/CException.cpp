@@ -3,12 +3,12 @@
 
 CException::CException(char * pcErr)
 {
-	strcpy(pcErreur, pcErr);
+	//strcpy(pcErreur, pcErr);
 }
 
 CException::CException(CException * EXCcopy)
 {
-	strcpy(pcErreur, EXCcopy->EXCLireErreur());
+	//strcpy(pcErreur, EXCcopy->EXCLireErreur());
 }
 
 CException::~CException()

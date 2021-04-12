@@ -1,5 +1,6 @@
-﻿  CMatrice.cpp
+﻿  CException.cpp
+  CMatrice.cpp
   CMatriceOperation.cpp
-c:\users\rezyia\desktop\files\etudes\polytech\di3\projet2c++\projetcpp1\projetcpp1\projetcpp1\cmatriceoperation.cpp(80): error C2760: syntax error: unexpected token ')', expected ';'
   ProjetCpp1.cpp
   Generating Code...
+  ProjetCpp1.vcxproj -> C:\Users\rezyia\Desktop\Files\Etudes\Polytech\DI3\Projet2c++\ProjetCpp1\ProjetCpp1\Debug\ProjetCpp1.exe

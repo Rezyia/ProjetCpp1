@@ -33,6 +33,8 @@ CMatrice<Type>::CMatrice(unsigned int nbCol, unsigned int nbRow) { // test const
 template<class Type>
 CMatrice<Type>::CMatrice(char * pcNomFichier)
 {
+	// Ouverture du fichier :
+
 }
 
 
