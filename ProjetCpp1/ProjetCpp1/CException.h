@@ -9,4 +9,5 @@ public:
 	CException(CException *EXCcopy);
 	~CException();
 	char* EXCLireErreur();
+	void EXCModifierErreur(char* pcErr);
 };

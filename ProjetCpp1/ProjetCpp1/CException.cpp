@@ -3,12 +3,12 @@
 
 CException::CException(char * pcErr)
 {
-	//strcpy(pcErreur, pcErr);
+	strcpy_s(pcErreur, sizeof(pcErr), pcErr);
 }
 
 CException::CException(CException * EXCcopy)
 {
-	//strcpy(pcErreur, EXCcopy->EXCLireErreur());
+	strcpy_s(pcErreur, sizeof(EXCcopy->EXCLireErreur()), EXCcopy->EXCLireErreur());
 }
 
 CException::~CException()
@@ -18,4 +18,8 @@ CException::~CException()
 char* CException::EXCLireErreur()
 {
 	return pcErreur;
+}
+
+void CException::EXCModifierErreur(char* pcErr) {
+	strcpy_s(pcErreur, sizeof(pcErr), pcErr);
 }

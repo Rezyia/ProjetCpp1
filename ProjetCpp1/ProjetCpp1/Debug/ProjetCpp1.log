@@ -1,6 +1,6 @@
 ﻿  CException.cpp
-  CMatrice.cpp
   CMatriceOperation.cpp
-  ProjetCpp1.cpp
-  Generating Code...
-  ProjetCpp1.vcxproj -> C:\Users\rezyia\Desktop\Files\Etudes\Polytech\DI3\Projet2c++\ProjetCpp1\ProjetCpp1\Debug\ProjetCpp1.exe
+c:\users\dylan\desktop\polytech\s6\oriente_objet\git\projetcpp1\projetcpp1\projetcpp1\cmatriceoperation.cpp(59): error C2760: erreur de syntaxe : jeton inattendu 'identificateur', attendu 'spécificateur de type'
+c:\users\dylan\desktop\polytech\s6\oriente_objet\git\projetcpp1\projetcpp1\projetcpp1\cmatriceoperation.cpp(85): error C2760: erreur de syntaxe : jeton inattendu 'identificateur', attendu 'spécificateur de type'
+c:\users\dylan\desktop\polytech\s6\oriente_objet\git\projetcpp1\projetcpp1\projetcpp1\cmatriceoperation.cpp(120): error C2760: erreur de syntaxe : jeton inattendu 'identificateur', attendu 'spécificateur de type'
+  Génération de code en cours...
