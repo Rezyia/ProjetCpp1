@@ -1,4 +1,5 @@
 ﻿  CException.cpp
+<<<<<<< HEAD
   CMatrice.cpp
 c:\users\rezyia\desktop\files\etudes\polytech\di3\projet2c++\projetcpp1\projetcpp1\projetcpp1\cmatrice.cpp : warning C4335: Mac file format detected: please convert the source file to either DOS or UNIX format
 c:\users\rezyia\desktop\files\etudes\polytech\di3\projet2c++\projetcpp1\projetcpp1\projetcpp1\cmatrice.cpp(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
@@ -6,3 +7,10 @@ c:\users\rezyia\desktop\files\etudes\polytech\di3\projet2c++\projetcpp1\projetcp
   CMatriceOperation.cpp
   ProjetCpp1.cpp
   Generating Code...
+=======
+  CMatriceOperation.cpp
+c:\users\dylan\desktop\polytech\s6\oriente_objet\git\projetcpp1\projetcpp1\projetcpp1\cmatriceoperation.cpp(59): error C2760: erreur de syntaxe : jeton inattendu 'identificateur', attendu 'spécificateur de type'
+c:\users\dylan\desktop\polytech\s6\oriente_objet\git\projetcpp1\projetcpp1\projetcpp1\cmatriceoperation.cpp(85): error C2760: erreur de syntaxe : jeton inattendu 'identificateur', attendu 'spécificateur de type'
+c:\users\dylan\desktop\polytech\s6\oriente_objet\git\projetcpp1\projetcpp1\projetcpp1\cmatriceoperation.cpp(120): error C2760: erreur de syntaxe : jeton inattendu 'identificateur', attendu 'spécificateur de type'
+  Génération de code en cours...
+>>>>>>> ffd82c1f91c208c3ca80512ebad35fa5a6413d43
