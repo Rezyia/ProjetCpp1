@@ -28,10 +28,10 @@ CMatrice<Type>::CMatrice(CMatrice<Type> *MATarg) {
 
 // Constructeur avec dimensions
 template <class Type>
-CMatrice<Type>::CMatrice(unsigned int nbCol, unsigned int nbRow) { // test constructeur custom sizes
-	uiMATNbreColonnes = nbCol;
-	uiMATNbreLignes = nbRow;
-	MATTableau = (Type*)malloc(sizeof(Type) * nbCol * nbRow);
+CMatrice<Type>::CMatrice(unsigned int uiNbCol, unsigned int uiNbRow) { // test constructeur custom sizes
+	uiMATNbreColonnes = uiNbCol;
+	uiMATNbreLignes = uiNbRow;
+	MATTableau = (Type*)malloc(sizeof(Type) * uiNbCol * uiNbRow);
 }
 
 // Constructeur depuis un fichier
@@ -39,7 +39,7 @@ template<class Type>
 CMatrice<Type>::CMatrice(char* pcNomFichier)
 {
 	// Ouverture du fichier :
-	ifstream ifsFichier(pcNomFichier);
+	std::ifstream ifsFichier(pcNomFichier);
 	if (ifsFichier == NULL) {
 		std::cout << "Le fichier n'a pas pu être ouvert\n";
 	}
@@ -98,7 +98,7 @@ CMatrice<Type>::CMatrice(char* pcNomFichier)
 			// TypeMatrice :
 			case 0:
 				// Ce projet gère UNIQUEMENT le cas où TypeMatrice vaut double, donc :
-				if (strcmp(valeurCourrante, "double") == 0) {
+				if (strcmp(valeurCourrante[0], "double") == 0) {
 					this = new CMatrice<double>();
 				}
 				else {
@@ -108,12 +108,12 @@ CMatrice<Type>::CMatrice(char* pcNomFichier)
 
 			// NBLignes :
 			case 1:
-				uiMATNbreLignes = atoi(valeurCourrante);
+				uiMATNbreLignes = atoi(valeurCourrante[0]);
 				break;
 
 			// NBColonnes :
 			case 2:
-				uiMATNbreColonnes = atoi(valeurCourrante);
+				uiMATNbreColonnes = atoi(valeurCourrante[0]);
 				break;
 
 			// Matrice :
@@ -145,6 +145,7 @@ CMatrice<Type>::CMatrice(char* pcNomFichier)
 			ifsFichier >> cLigne;
 		}
 	}
+
 }
 
 

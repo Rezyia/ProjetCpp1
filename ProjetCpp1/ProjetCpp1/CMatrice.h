@@ -8,7 +8,7 @@ private:
 public:
 	CMatrice<Type>();
 	CMatrice<Type>(CMatrice<Type>* MATarg);
-	CMatrice<Type>(unsigned int nbCol, unsigned int nbRow);
+	CMatrice<Type>(unsigned int uiNbCol, unsigned int uiNbRow);
 	CMatrice<Type>(char* pcNomFichier);
 	~CMatrice<Type>();
 	CMatrice<Type> MATTransposer();

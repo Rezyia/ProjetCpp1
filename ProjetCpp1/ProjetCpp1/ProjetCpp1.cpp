@@ -8,8 +8,8 @@
 int main()
 {
 	std::cout << "Programme compilé, exécution :\n";
-	//CMatriceOperation<int>* mat1 = new CMatriceOperation<int>();
-	//mat1->MATAfficher();
+	
+	CMatrice<int> mat = new CMatrice<int>();
 	
 	return 0;
 }
