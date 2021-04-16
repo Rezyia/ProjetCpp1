@@ -1,5 +1,6 @@
 #pragma once
 #include "CMatrice.h"
+#include "CMatrice.cpp"
 
 template <class Type>
 

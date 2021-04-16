@@ -1,10 +1,14 @@
 #pragma once
+
+#define NBRE_LIGNES_BASE 2
+#define NBRE_COLONNES_BASE 2
+
 template <class Type> class CMatrice
 {
 private:
 	unsigned int uiMATNbreLignes;
 	unsigned int uiMATNbreColonnes;
-	Type* MATTableau;
+	Type** MATTableau;
 public:
 	CMatrice<Type>();
 	CMatrice<Type>(CMatrice<Type>* MATarg);

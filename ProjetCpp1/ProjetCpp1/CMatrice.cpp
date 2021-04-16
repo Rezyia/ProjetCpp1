@@ -14,16 +14,22 @@ template <class Type>
 CMatrice<Type>::CMatrice() { 
 	uiMATNbreColonnes = NBRE_COLONNES_BASE;
 	uiMATNbreLignes = NBRE_LIGNES_BASE;
-	MATTableau = (Type*)malloc(sizeof(Type) * NBRE_COLONNES_BASE * NBRE_LIGNES_BASE);
+	MATTableau = (Type**)malloc(NBRE_COLONNES_BASE * sizeof(Type*));
+	for (unsigned int uiBoucleAlloc = 0; uiBoucleAlloc < NBRE_COLONNES_BASE; uiBoucleAlloc++) {
+		MATTableau[uiBoucleAlloc] = (Type*)malloc(NBRE_LIGNES_BASE * sizeof(Type));
+	}
 }
 
 // Constructeur de recopie
 template <class Type>
 CMatrice<Type>::CMatrice(CMatrice<Type> *MATarg) {
 	// WIP / To change :
-	uiMATNbreColonnes = NBRE_COLONNES_BASE;
-	uiMATNbreLignes = NBRE_LIGNES_BASE;
-	MATTableau = (Type*)malloc(sizeof(Type) * NBRE_COLONNES_BASE * NBRE_LIGNES_BASE);
+	uiMATNbreColonnes = MATarg->MATLireNbreColonnes();
+	uiMATNbreLignes = MATarg->MATLireNbreLignes();
+	MATTableau = (Type**)malloc(uiMATNbreColonnes * sizeof(Type*));
+	for (unsigned int uiBoucleAlloc = 0; uiBoucleAlloc<uiMATNbreColonnes; uiBoucleAlloc++) {
+		MATTableau[uiBoucleAlloc] = (Type*)malloc(uiMATNbreLignes * sizeof(Type));
+	}
 }
 
 // Constructeur avec dimensions
@@ -31,7 +37,10 @@ template <class Type>
 CMatrice<Type>::CMatrice(unsigned int uiNbCol, unsigned int uiNbRow) { // test constructeur custom sizes
 	uiMATNbreColonnes = uiNbCol;
 	uiMATNbreLignes = uiNbRow;
-	MATTableau = (Type*)malloc(sizeof(Type) * uiNbCol * uiNbRow);
+	MATTableau = (Type**)malloc(uiNbCol * sizeof(Type*));
+	for (unsigned int uiBoucleAlloc = 0; uiBoucleAlloc < uiNbCol; uiBoucleAlloc++) {
+		MATTableau[uiBoucleAlloc] = (Type*)malloc(uiNbRow * sizeof(Type));
+	}
 }
 
 // Constructeur depuis un fichier

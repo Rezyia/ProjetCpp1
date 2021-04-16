@@ -10,6 +10,14 @@ int main()
 	std::cout << "Programme compilé, exécution :\n";
 	
 	CMatrice<int> mat = new CMatrice<int>();
+
+	mat.MATModifierVal(1, 0, 0);
+	mat.MATModifierVal(2, 0, 1);
+	mat.MATModifierVal(3, 1, 0);
+	mat.MATModifierVal(4, 1, 1);
+
+	mat.MATAfficher();
+	
 	
 	return 0;
 }

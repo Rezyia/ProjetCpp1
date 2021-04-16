@@ -3,7 +3,4 @@
   CMatriceOperation.cpp
   ProjetCpp1.cpp
   Generating Code...
-ProjetCpp1.obj : error LNK2019: unresolved external symbol "public: __thiscall CMatrice<int>::CMatrice<int>(void)" (??0?$CMatrice@H@@QAE@XZ) referenced in function _main
-ProjetCpp1.obj : error LNK2019: unresolved external symbol "public: __thiscall CMatrice<int>::CMatrice<int>(class CMatrice<int> *)" (??0?$CMatrice@H@@QAE@PAV0@@Z) referenced in function _main
-ProjetCpp1.obj : error LNK2019: unresolved external symbol "public: __thiscall CMatrice<int>::~CMatrice<int>(void)" (??1?$CMatrice@H@@QAE@XZ) referenced in function _main
-C:\Users\rezyia\Desktop\Files\Etudes\Polytech\DI3\Projet2c++\ProjetCpp1\ProjetCpp1\Debug\ProjetCpp1.exe : fatal error LNK1120: 3 unresolved externals
+  ProjetCpp1.vcxproj -> C:\Users\rezyia\Desktop\Files\Etudes\Polytech\DI3\Projet2c++\ProjetCpp1\ProjetCpp1\Debug\ProjetCpp1.exe
