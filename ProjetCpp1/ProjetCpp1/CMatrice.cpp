@@ -161,11 +161,11 @@ CMatrice<Type> CMatrice<Type>::MATTransposer() {
 	CMatrice<Type> *MATtmp = new CMatrice<Type>();
 	MATtmp->MATModifierNbreColonnes(MATLireNbreLignes());
 	MATtmp->MATModifierNbreLignes(MATLireNbreColonnes());
-	unsigned int iBoucle, jBoucle;
-	for (iBoucle = 0; iBoucle < uiMATNbreColonnes; iBoucle++) {
-		for (jBoucle = 0; jBoucle < uiMATNbreLignes; jBoucle++) {
+	unsigned int uiBoucleCol, uiBoucleRow;
+	for (uiBoucleCol = 0; uiBoucleCol < uiMATNbreColonnes; uiBoucleCol++) {
+		for (uiBoucleRow = 0; uiBoucleRow < uiMATNbreLignes; uiBoucleRow++) {
 			//MATtmp->MATTableau[jBoucle][iBoucle] = MATTableau[iBoucle][jBoucle];
-			MATtmp->MATModifierVal(MATLireVal(iBoucle, jBoucle), jBoucle, iBoucle);
+			MATtmp->MATModifierVal(MATLireVal(uiBoucleCol, uiBoucleRow), uiBoucleRow, uiBoucleCol);
 		}
 	}
 	return *MATtmp;
@@ -175,10 +175,10 @@ CMatrice<Type> CMatrice<Type>::MATTransposer() {
 template <class Type>
 void CMatrice<Type>::MATAfficher() 
 {
-	unsigned int iBoucle, jBoucle;
-	for (iBoucle = 0; iBoucle < uiMATNbreColonnes; iBoucle++) {
-		for (jBoucle = 0; jBoucle < uiMATNbreLignes; jBoucle++) {
-			std::cout << MATLireVal(iBoucle, jBoucle) << " ";
+	unsigned int uiBoucleCol, uiBoucleRow;
+	for (uiBoucleCol = 0; uiBoucleCol < uiMATNbreColonnes; uiBoucleCol++) {
+		for (uiBoucleRow = 0; uiBoucleRow < uiMATNbreLignes; uiBoucleRow++) {
+			std::cout << MATLireVal(uiBoucleCol, uiBoucleRow) << " ";
 		}
 		std::cout << "\n";
 	}

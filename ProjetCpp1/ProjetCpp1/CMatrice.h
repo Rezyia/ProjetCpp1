@@ -27,11 +27,11 @@ public:
 	}
 
 	void MATModifierVal(Type valArg, unsigned int uiNumCol, unsigned int uiNumLig){
-		MATTableau[uiNumCol][uiNumLig] = valArg;
+		MATTableau[uiNumLig][uiNumCol] = valArg;
 	}
 
 	Type MATLireVal(unsigned int uiNumCol, unsigned int uiNumLig) {
-		return MATTableau[uiNumCol][uiNumLig];
+		return MATTableau[uiNumLig][uiNumCol];
 	}
 
 };

@@ -1,9 +1,2 @@
-﻿  CException.cpp
-  CMatrice.cpp
-c:\users\rezyia\desktop\files\etudes\polytech\di3\projet2c++\projetcpp1\projetcpp1\projetcpp1\cmatrice.cpp(42): error C2760: syntax error: unexpected token 'identifier', expected ';'
-  CMatriceOperation.cpp
-c:\users\rezyia\desktop\files\etudes\polytech\di3\projet2c++\projetcpp1\projetcpp1\projetcpp1\cmatriceoperation.cpp(44): error C2760: syntax error: unexpected token 'identifier', expected 'type specifier'
-c:\users\rezyia\desktop\files\etudes\polytech\di3\projet2c++\projetcpp1\projetcpp1\projetcpp1\cmatriceoperation.cpp(70): error C2760: syntax error: unexpected token 'identifier', expected 'type specifier'
-c:\users\rezyia\desktop\files\etudes\polytech\di3\projet2c++\projetcpp1\projetcpp1\projetcpp1\cmatriceoperation.cpp(105): error C2760: syntax error: unexpected token 'identifier', expected 'type specifier'
-  ProjetCpp1.cpp
-  Generating Code...
+﻿  CMatrice.cpp
+c:\users\dylan\desktop\polytech\s6\oriente_objet\git\projetcpp1\projetcpp1\projetcpp1\cmatrice.cpp(43): error C2760: erreur de syntaxe : jeton inattendu 'identificateur', attendu ';'
