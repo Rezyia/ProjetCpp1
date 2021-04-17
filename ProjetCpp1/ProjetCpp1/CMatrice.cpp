@@ -13,12 +13,12 @@
 template <class Type>
 CMatrice<Type>::CMatrice() { 
 	//std::cout << "Constructeur par défaut :\n";
-
 	uiMATNbreColonnes = NBRE_COLONNES_BASE;
 	uiMATNbreLignes = NBRE_LIGNES_BASE;
-	MATTableau = (Type**)malloc(NBRE_COLONNES_BASE * sizeof(Type*));
-	for (unsigned int uiBoucleAlloc = 0; uiBoucleAlloc < NBRE_COLONNES_BASE; uiBoucleAlloc++) {
-		MATTableau[uiBoucleAlloc] = (Type*)malloc(NBRE_LIGNES_BASE * sizeof(Type));
+
+	MATTableau = (Type**)malloc(uiMATNbreLignes * sizeof(Type*));
+	for (unsigned int uiBoucleAlloc = 0; uiBoucleAlloc < uiMATNbreLignes; uiBoucleAlloc++) {
+		MATTableau[uiBoucleAlloc] = (Type*)malloc(uiMATNbreColonnes * sizeof(Type));
 	}
 }
 
@@ -32,14 +32,14 @@ CMatrice<Type>::CMatrice(CMatrice<Type>& MATarg) {
 	uiMATNbreLignes = MATarg.MATLireNbreLignes();
 
 	// Allocation de la matrice :
-	MATTableau = (Type**)malloc(uiMATNbreColonnes * sizeof(Type*));
-	for (unsigned int uiBoucleAlloc = 0; uiBoucleAlloc<uiMATNbreColonnes; uiBoucleAlloc++) {
-		MATTableau[uiBoucleAlloc] = (Type*)malloc(uiMATNbreLignes * sizeof(Type));
+	MATTableau = (Type**)malloc(uiMATNbreLignes * sizeof(Type*));
+	for (unsigned int uiBoucleAlloc = 0; uiBoucleAlloc< uiMATNbreLignes; uiBoucleAlloc++) {
+		MATTableau[uiBoucleAlloc] = (Type*)malloc(uiMATNbreColonnes * sizeof(Type));
 	}
 
 	// Recopie des valeurs :
-	for (unsigned int iBoucleRecopie = 0; iBoucleRecopie < uiMATNbreColonnes; iBoucleRecopie++) {
-		for (unsigned int jBoucleRecopie = 0; jBoucleRecopie < uiMATNbreLignes; jBoucleRecopie++) {
+	for (unsigned int iBoucleRecopie = 0; iBoucleRecopie < uiMATNbreLignes; iBoucleRecopie++) {
+		for (unsigned int jBoucleRecopie = 0; jBoucleRecopie < uiMATNbreColonnes; jBoucleRecopie++) {
 			MATTableau[iBoucleRecopie][jBoucleRecopie] = MATarg.MATLireVal(iBoucleRecopie, jBoucleRecopie);
 		}
 	}
@@ -140,7 +140,10 @@ CMatrice<Type>::CMatrice(char* pcNomFichier)
 
 			// Matrice :
 			case 3:
-				MATTableau = malloc(sizeof(double) * uiMATNbreColonnes * uiMATNbreLignes);
+				MATTableau = (double**)malloc(uiMATNbreLignes * sizeof(double*));
+				for (unsigned int uiBoucleAlloc = 0; uiBoucleAlloc < uiMATNbreLignes; uiBoucleAlloc++) {
+					MATTableau[uiBoucleAlloc] = (double*)malloc(uiMATNbreColonnes * sizeof(double));
+				}
 				int lBoucleInitMat = 0;
 				int cBoucleInitMat = 0;
 
@@ -170,24 +173,26 @@ CMatrice<Type>::CMatrice(char* pcNomFichier)
 }
 
 
-
 // Destructeur
 template <class Type>
 CMatrice<Type>::~CMatrice() {
 	free(MATTableau);
 }
 
+
+
 //Fonction pour obtenir la transpos� d'une matrice quelconque
 template <class Type>
 CMatrice<Type> CMatrice<Type>::MATTransposer() {
-	CMatrice<Type> *MATtmp = new CMatrice<Type>();
-	MATtmp->MATModifierNbreColonnes(MATLireNbreLignes());
-	MATtmp->MATModifierNbreLignes(MATLireNbreColonnes());
+	CMatrice<Type> *MATtmp = new CMatrice<Type>(MATLireNbreColonnes(), MATLireNbreLignes());
+	//MATtmp->MATModifierNbreColonnes(MATLireNbreLignes());
+	//MATtmp->MATModifierNbreLignes(MATLireNbreColonnes());
+
 	unsigned int uiBoucleCol, uiBoucleRow;
-	for (uiBoucleCol = 0; uiBoucleCol < uiMATNbreColonnes; uiBoucleCol++) {
-		for (uiBoucleRow = 0; uiBoucleRow < uiMATNbreLignes; uiBoucleRow++) {
-			//MATtmp->MATTableau[jBoucle][iBoucle] = MATTableau[iBoucle][jBoucle];
-			MATtmp->MATModifierVal(MATLireVal(uiBoucleCol, uiBoucleRow), uiBoucleRow, uiBoucleCol);
+
+	for (uiBoucleRow = 0; uiBoucleRow < uiMATNbreLignes; uiBoucleRow++) {
+		for (uiBoucleCol = 0; uiBoucleCol < uiMATNbreColonnes; uiBoucleCol++) {
+			MATtmp->MATModifierVal(MATLireVal(uiBoucleRow, uiBoucleCol), uiBoucleRow, uiBoucleCol);
 		}
 	}
 	return *MATtmp;
@@ -198,9 +203,9 @@ template <class Type>
 void CMatrice<Type>::MATAfficher() 
 {
 	unsigned int uiBoucleCol, uiBoucleRow;
-	for (uiBoucleCol = 0; uiBoucleCol < uiMATNbreColonnes; uiBoucleCol++) {
-		for (uiBoucleRow = 0; uiBoucleRow < uiMATNbreLignes; uiBoucleRow++) {
-			std::cout << MATLireVal(uiBoucleCol, uiBoucleRow) << " ";
+	for (uiBoucleRow = 0; uiBoucleRow < uiMATNbreLignes; uiBoucleRow++) {
+		for (uiBoucleCol = 0; uiBoucleCol < uiMATNbreColonnes; uiBoucleCol++) {
+			std::cout << MATLireVal(uiBoucleRow, uiBoucleCol) << "\t";
 		}
 		std::cout << "\n";
 	}
@@ -210,7 +215,13 @@ void CMatrice<Type>::MATAfficher()
 // Fonction pour modifier le nombre de lignes de la matrice
 template <class Type>
 void CMatrice<Type>::MATModifierNbreLignes(unsigned int uiArg) {
-	Type* newMat = malloc(typeof(Type) * uiMATNbreColonnes* uiArg); // Allocation nouvelle matrice
+	//Type* newMat = malloc(typeof(Type) * uiMATNbreColonnes* uiArg);
+	
+	// Allocation nouvelle matrice
+	Type* newMat = (Type**)malloc(uiArg * sizeof(Type*));
+	for (unsigned int uiBoucleAlloc = 0; uiBoucleAlloc < uiArg; uiBoucleAlloc++) {
+		newMat[uiBoucleAlloc] = (Type*)malloc(uiMATNbreColonnes * sizeof(Type));
+	}
 
 	// Initialisation nouvelle matrice par des 0 :
 	for (int i = 0; i < uiArg; i++) {
@@ -232,10 +243,17 @@ void CMatrice<Type>::MATModifierNbreLignes(unsigned int uiArg) {
 	MATTableau = newMat;
 }
 
+
 // Fonction pour modifier le nombre de colonnes de la matrice
 template <class Type>
 void CMatrice<Type>::MATModifierNbreColonnes(unsigned int uiArg) {
-	Type* newMat = malloc(typeof(Type) * uiMATNbreColonnes* uiArg); // Allocation nouvelle matrice
+	//Type* newMat = malloc(typeof(Type) * uiMATNbreColonnes* uiArg);
+	
+	// Allocation nouvelle matrice
+	Type* newMat = (Type**)malloc(uiMATNbreLignes * sizeof(Type*));
+	for (unsigned int uiBoucleAlloc = 0; uiBoucleAlloc < uiMATNbreLignes; uiBoucleAlloc++) {
+		newMat[uiBoucleAlloc] = (Type*)malloc(uiArg * sizeof(Type));
+	}
 
 	// Initialisation nouvelle matrice par des 0 :
 	for (int i = 0; i < uiArg; i++) {

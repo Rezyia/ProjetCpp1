@@ -10,6 +10,7 @@ int main()
 {
 	std::cout << "Programme compilé, exécution :\n";
 	
+
 	std::cout << "\nTest 1 : création mat:\n";
 	CMatriceOperation<int>* mat = new CMatriceOperation<int>();
 
@@ -28,11 +29,33 @@ int main()
 
 	
 	std::cout << "\nTest 3 : création mat3:\n";
+	CMatriceOperation<double>* mat3 = new CMatriceOperation<double>(3,2);
 
-	CMatriceOperation<int> mat3;
-	mat3 = *mat + *mat2;
-	
-	mat3.MATAfficher();
+	mat3->MATModifierVal(1.1, 0, 0);
+	mat3->MATModifierVal(2.2, 0, 1);
+	mat3->MATModifierVal(3.0, 1, 0);
+	mat3->MATModifierVal(4.5, 1, 1);
+	mat3->MATModifierVal(5.0, 2, 0);
+	mat3->MATModifierVal(6  , 2, 1);
+
+	mat3->MATAfficher();
+
+
+	std::cout << "\nTest 4 : création mat4:\n";
+	CMatriceOperation<double>* mat4 = new CMatriceOperation<double>((char*)"matInit.txt");
+
+	mat4->MATAfficher();
+
+
+	/*
+	std::cout << "\nTest 5 : opérations :\n";
+
+	CMatriceOperation<int> mat4;
+	mat4 = *mat + *mat2;
+
+	mat4.MATAfficher();
+	*/
+
 
 	return 0;
 }
