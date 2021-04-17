@@ -114,6 +114,7 @@ CMatriceOperation<Type>::CMatriceOperation(char* pcNomFichier)
 			valeurCourrante[indiceValeurCourrante] = '\0';
 
 
+			// Affectation des attributs :
 			switch (iNumChamps) {
 				// TypeMatrice :
 			case 0:
@@ -164,10 +165,13 @@ CMatriceOperation<Type>::CMatriceOperation(char* pcNomFichier)
 
 				std::cout << "Affectation des valeurs :" << std::endl;
 
+				//std::cout << "max : [" << CMatrice<double>::MATLireNbreLignes()-1 << ";" << CMatrice<double>::MATLireNbreColonnes()-1 << "]\n";
+
 				while (lBoucleInitMat < CMatrice<double>::MATLireNbreLignes()) {
+					cBoucleInitMat = 0;
 					while (cBoucleInitMat < CMatrice<double>::MATLireNbreColonnes()) {
 						CMatrice<double>::MATModifierVal(atof(cLigne), lBoucleInitMat, cBoucleInitMat);
-
+						
 						std::cout << "[" << lBoucleInitMat << ";" << cBoucleInitMat << "] = ";
 						std::cout << cLigne << std::endl;
 
@@ -175,6 +179,7 @@ CMatriceOperation<Type>::CMatriceOperation(char* pcNomFichier)
 						ifsFichier >> cLigne;
 						cBoucleInitMat++;
 					}
+
 					lBoucleInitMat++;
 				}
 				break;
