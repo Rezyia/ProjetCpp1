@@ -213,32 +213,34 @@ Nécessite : Les deux matrices doivent être de même taille
 Sortie : une matrice de type Type de même taille et dont chaque case[i][j] est égale à la somme des cases[i][j] des 2 autres matrices
 **/
 template<class Type>
-CMatriceOperation<Type> CMatriceOperation<Type>::operator+(CMatriceOperation<Type> MAOArg)
+CMatriceOperation<Type>& CMatriceOperation<Type>::operator+(CMatriceOperation<Type> MAOArg)
 {
+	// Initialisation matrice retour :
+	//std::cout << "Initialisation matrice retour :\n";
+	unsigned int uiNbCol = CMatrice<Type>::MATLireNbreColonnes(), uiNbRow = CMatrice<Type>::MATLireNbreLignes();
+	CMatriceOperation<Type>* MAOresult = new CMatriceOperation<Type>(uiNbCol, uiNbRow);
+
 	try {
-		
 		if (CMatrice<Type>::MATLireNbreColonnes() != MAOArg.MATLireNbreColonnes() || CMatrice<Type>::MATLireNbreLignes() != MAOArg.MATLireNbreLignes()) {
 			CException *EXCerreur = new CException((char*)ERROR_TAILLE_MATRICE_DIFF);
 			//EXCerreur->EXCModifierErreur((char*)ERROR_TAILLE_MATRICE_DIFF);
 			throw(*EXCerreur);
 		}
-		/*else {
-			
-		}*/
-		
+
+		//std::cout << "Calcul :\n";
+		for (unsigned int uiBoucleRow = 0; uiBoucleRow < uiNbRow; uiBoucleRow++) {
+			for (unsigned int uiBoucleCol = 0; uiBoucleCol < uiNbCol; uiBoucleCol++) {
+				//std::cout << "[" << uiBoucleRow << ";" << uiBoucleCol << "] = " << CMatrice<Type>::MATLireVal(uiBoucleRow, uiBoucleCol) + MAOArg.CMatrice<Type>::MATLireVal(uiBoucleRow, uiBoucleCol) << std::endl;
+				MAOresult->CMatrice<Type>::MATModifierVal(CMatrice<Type>::MATLireVal(uiBoucleRow, uiBoucleCol) + MAOArg.CMatrice<Type>::MATLireVal(uiBoucleRow, uiBoucleCol), uiBoucleRow, uiBoucleCol);
+			}
+		}
 	}
 	catch (CException EXClevee) {
 		std::cout << "Erreur : " << EXClevee.EXCLireErreur() << ".\n";
 	}
 
-	unsigned int uiNbCol = CMatrice<Type>::MATLireNbreColonnes(), uiNbRow = CMatrice<Type>::MATLireNbreLignes();
-	CMatriceOperation<Type>* MAOresult = new CMatriceOperation<Type>(uiNbCol, uiNbRow);
 
-	for (unsigned int uiBoucleRow = 0; uiBoucleRow < uiNbRow; uiBoucleRow++) {
-		for (unsigned int uiBoucleCol = 0; uiBoucleCol < uiNbCol; uiBoucleCol++) {
-			MAOresult->CMatrice<Type>::MATModifierVal(CMatrice<Type>::MATLireVal(uiBoucleRow, uiBoucleCol) + MAOArg.CMatrice<Type>::MATLireVal(uiBoucleRow, uiBoucleCol), uiBoucleRow, uiBoucleCol);
-		}
-	}
+	//std::cout << "Retour matrice :\n";
 	return *MAOresult;
 }
 
@@ -250,30 +252,35 @@ Nécessite : Les deux matrices doivent être de même taille
 Sortie : une matrice de type Type de même taille et dont chaque case[i][j] est égale à la différences des cases[i][j] des 2 autres matrices
 **/
 template<class Type>
-CMatriceOperation<Type> CMatriceOperation<Type>::operator-(CMatriceOperation<Type> MAOArg)
+CMatriceOperation<Type>& CMatriceOperation<Type>::operator-(CMatriceOperation<Type> MAOArg)
 {
+	// Initialisation matrice retour :
+	//std::cout << "Initialisation matrice retour :\n";
+	unsigned int uiNbCol = CMatrice<Type>::MATLireNbreColonnes(), uiNbRow = CMatrice<Type>::MATLireNbreLignes();
+	CMatriceOperation<Type>* MAOresult = new CMatriceOperation<Type>(uiNbCol, uiNbRow);
+
 	try {
-		if (this->MATLireNbreColonnes() != MAOArg->MATLireNbreColonnes() || this->MATLireNbreLignes() != MAOArg->MATLireNbreLignes()) {
-			CException *EXCerreur;// = new CException(ERROR_TAILLE_MATRICE_DIFF);
-			EXCerreur->EXCModifierErreur(ERROR_TAILLE_MATRICE_DIFF);
+		if (CMatrice<Type>::MATLireNbreColonnes() != MAOArg.MATLireNbreColonnes() || CMatrice<Type>::MATLireNbreLignes() != MAOArg.MATLireNbreLignes()) {
+			CException *EXCerreur = new CException((char*)ERROR_TAILLE_MATRICE_DIFF);
+			//EXCerreur->EXCModifierErreur((char*)ERROR_TAILLE_MATRICE_DIFF);
 			throw(*EXCerreur);
 		}
-		else {
-			unsigned int uiNbCol = this->MATLireNbreColonnes();
-			unsigned int uiNbRow = this->MATLireNbreLignes();
-			CMatriceOperation<Type> MAOresult = new CMatriceOperation<Type>(uiNbCol, uiNbRow);
 
-			for (int iBoucleRow = 0; iBoucleRow < uiNbRow; iBoucleRow++) {
-				for (int iBoucleCol = 0; iBoucleCol < uiNbCol; iBoucleCol++) {
-					MAOresult->MATModifierVal(this->MATLireVal(iBoucleRow, iBoucleCol) - MAOArg->MATLireVal(iBoucleRow, iBoucleCol), iBoucleRow, iBoucleCol);
-				}
+		//std::cout << "Calcul :\n";
+		for (unsigned int uiBoucleRow = 0; uiBoucleRow < uiNbRow; uiBoucleRow++) {
+			for (unsigned int uiBoucleCol = 0; uiBoucleCol < uiNbCol; uiBoucleCol++) {
+				//std::cout << "[" << uiBoucleRow << ";" << uiBoucleCol << "] = " << CMatrice<Type>::MATLireVal(uiBoucleRow, uiBoucleCol) + MAOArg.CMatrice<Type>::MATLireVal(uiBoucleRow, uiBoucleCol) << std::endl;
+				MAOresult->CMatrice<Type>::MATModifierVal(CMatrice<Type>::MATLireVal(uiBoucleRow, uiBoucleCol) - MAOArg.CMatrice<Type>::MATLireVal(uiBoucleRow, uiBoucleCol), uiBoucleRow, uiBoucleCol);
 			}
-			return MAOresult;
 		}
 	}
 	catch (CException EXClevee) {
 		std::cout << "Erreur : " << EXClevee.EXCLireErreur() << ".\n";
 	}
+
+
+	//std::cout << "Retour matrice :\n";
+	return *MAOresult;
 }
 
 /**
@@ -284,39 +291,40 @@ Nécessite : La hauteur de la matrice appelante doit être égale à la longueur
 Sortie : une matrice de type Type qui est le produit des 2 autres matrices
 **/
 template<class Type>
-CMatriceOperation<Type> CMatriceOperation<Type>::operator*(CMatriceOperation<Type> MAOArg)
+CMatriceOperation<Type>& CMatriceOperation<Type>::operator*(CMatriceOperation<Type> MAOArg)
 {
+	// Initialisation matrice retour :
+	//std::cout << "Initialisation matrice retour :\n";
+	unsigned int uiNbCol = CMatrice<Type>::MATLireNbreColonnes(), uiNbRow = CMatrice<Type>::MATLireNbreLignes();
+	CMatriceOperation<Type>* MAOresult = new CMatriceOperation<Type>(uiNbCol, uiNbRow);
+
 	try {
-		if (MAOArg->MATLireNbreLignes() != this->MATLireNbreColonnes()) {
-			CException *EXCerreur;// = new CException(ERROR_TAILLE_MATRICE_IMCOMPATIBLE);
-			EXCerreur->EXCModifierErreur(ERROR_TAILLE_MATRICE_IMCOMPATIBLE);
+		if (CMatrice<Type>::MATLireNbreColonnes() != MAOArg.MATLireNbreColonnes() || CMatrice<Type>::MATLireNbreLignes() != MAOArg.MATLireNbreLignes()) {
+			CException *EXCerreur = new CException((char*)ERROR_TAILLE_MATRICE_DIFF);
+			//EXCerreur->EXCModifierErreur((char*)ERROR_TAILLE_MATRICE_DIFF);
 			throw(*EXCerreur);
 		}
-		else {
-			unsigned int uiNbRow = this->MATLireNbreLignes();
-			unsigned int uiNbCol = MAOArg->MATLireNbreColonnes(); // hauteur MatA et longueur MatB de MatA*MatB
-			CMatriceOperation<Type> MAOresult = new CMatriceOperation<Type>(uiNbCol, uiNbRow);
-			Type tResultatCase;
+		Type tResultatCase;
 
-			for (int iBoucleRow = 0; iBoucleRow < uiNbRow; iBoucleRow++) {
-				for (int iBoucleCol = 0; iBoucleCol < uiNbCol; iBoucleCol++) {
-					for (int iBoucle = 0; iBoucle < this->MATLireNbreColonnes(); iBoucle++) {
-						if (iBoucle == 0) {
-							tResultatCase = this->MATLireVal(iBoucleRow, 0) * MAOArg->MATLireVal(0, iBoucleCol);
-						}
-						else {
-							tResultatCase += this->MATLireVal(iBoucleRow, iBoucle) * MAOArg->MATLireVal(iBoucle, iBoucleCol);
-						}	
+		for (unsigned int uiBoucleRow = 0; uiBoucleRow < uiNbRow; uiBoucleRow++) {
+			for (unsigned int uiBoucleCol = 0; uiBoucleCol < uiNbCol; uiBoucleCol++) {
+				for (unsigned int uiBoucle = 0; uiBoucle < CMatrice<Type>::MATLireNbreColonnes(); uiBoucle++) {
+					if (uiBoucle == 0) {
+						tResultatCase = CMatrice<Type>::MATLireVal(uiBoucleRow, 0) * MAOArg.CMatrice<Type>::MATLireVal(0, uiBoucleCol);
 					}
-					MAOresult->MATModifierVal(tResultatCase, iBoucleRow, iBoucleCol);
+					else {
+						tResultatCase += CMatrice<Type>::MATLireVal(uiBoucleRow, uiBoucle) * MAOArg.CMatrice<Type>::MATLireVal(uiBoucle, uiBoucleCol);
+					}
 				}
+				MAOresult->MATModifierVal(tResultatCase, uiBoucleRow, uiBoucleCol);
 			}
-			return MAOresult;
 		}
 	}
 	catch (CException EXClevee) {
 		std::cout << "Erreur : " << EXClevee.EXCLireErreur() << ".\n";
 	}
+
+	return *MAOresult;
 }
 
 /**
@@ -327,22 +335,22 @@ Nécessite : La matrice est de type Type
 Sortie : une matrice de type Type de même taille et dont chaque case[i][j] est égale au produit de varArg et de la cases[i][j] de la matrices
 **/
 template<class Type>
-CMatriceOperation<Type> CMatriceOperation<Type>::operator*(Type varArg)
+CMatriceOperation<Type>& CMatriceOperation<Type>::operator*(Type varArg)
 {
-	CMatriceOperation<Type> MAOresult = new CMatriceOperation<Type>();
-	unsigned int uiNbLignes = this->MATLireNbreLignes();
-	unsigned int uiNbColonnes = this->MATLireNbreColonnes();
-	MAOresult.MATModifierNbreColonnes(uiNbColonnes);
-	MAOresult.MATModifierNbreLignes(uiNbLignes);
+	CMatriceOperation<Type>* MAOresult = new CMatriceOperation<Type>();
+	unsigned int uiNbLignes = CMatrice<Type>::MATLireNbreLignes();
+	unsigned int uiNbColonnes = CMatrice<Type>::MATLireNbreColonnes();
+	MAOresult->MATModifierNbreColonnes(uiNbColonnes);
+	MAOresult->MATModifierNbreLignes(uiNbLignes);
 
-	int iBoucleLigne;
-	int iBoucleColonne;
-	for (iBoucleColonne = 0; iBoucleColonne < uiNbColonnes; iBoucleColonne++) {
-		for (iBoucleLigne = 0; iBoucleLigne < uiNbLignes; iBoucleLigne++) {
-			MAOresult.MATModifierVal(this->MATLireVal(iBoucleColonne, iBoucleLigne)*varArg, iBoucleColonne, iBoucleLigne);
+	unsigned int uiBoucleLigne;
+	unsigned int uiBoucleColonne;
+	for (uiBoucleColonne = 0; uiBoucleColonne < uiNbColonnes; uiBoucleColonne++) {
+		for (uiBoucleLigne = 0; uiBoucleLigne < uiNbLignes; uiBoucleLigne++) {
+			MAOresult->MATModifierVal(CMatrice<Type>::MATLireVal(uiBoucleColonne, uiBoucleLigne)*varArg, uiBoucleColonne, uiBoucleLigne);
 		}
 	}
-	return MAOresult;
+	return *MAOresult;
 }
 
 /**
@@ -353,21 +361,21 @@ Nécessite : La matrice est de type Type
 Sortie : une matrice de type Type de même taille et dont chaque case[i][j] est égale au quotient de varArg et de la cases[i][j] de la matrices
 **/
 template<class Type>
-CMatriceOperation<Type> CMatriceOperation<Type>::operator/(Type varArg)
+CMatriceOperation<Type>& CMatriceOperation<Type>::operator/(Type varArg)
 {
-	CMatriceOperation<Type> *MAOresult = new CMatriceOperation<Type>();
-	unsigned int uiNbLignes = this->MATLireNbreLignes();
-	unsigned int uiNbColonnes = this->MATLireNbreColonnes();
+	CMatriceOperation<Type>* MAOresult = new CMatriceOperation<Type>();
+	unsigned int uiNbLignes = CMatrice<Type>::MATLireNbreLignes();
+	unsigned int uiNbColonnes = CMatrice<Type>::MATLireNbreColonnes();
 	MAOresult->MATModifierNbreColonnes(uiNbColonnes);
 	MAOresult->MATModifierNbreLignes(uiNbLignes);
 
-	int iBoucleLigne;
-	int iBoucleColonne;
-	for (iBoucleColonne = 0; iBoucleColonne < uiNbColonnes; iBoucleColonne++) {
-		for (iBoucleLigne = 0; iBoucleLigne < uiNbLignes; iBoucleLigne++) {
-			MAOresult->MATModifierVal(this->MATLireVal(iBoucleColonne, iBoucleLigne)/varArg, iBoucleColonne, iBoucleLigne);
+	unsigned int uiBoucleLigne;
+	unsigned int uiBoucleColonne;
+	for (uiBoucleColonne = 0; uiBoucleColonne < uiNbColonnes; uiBoucleColonne++) {
+		for (uiBoucleLigne = 0; uiBoucleLigne < uiNbLignes; uiBoucleLigne++) {
+			MAOresult->MATModifierVal(CMatrice<Type>::MATLireVal(uiBoucleColonne, uiBoucleLigne)/varArg, uiBoucleColonne, uiBoucleLigne);
 		}
 	}
-	return MAOresult;
+	return *MAOresult;
 }
 

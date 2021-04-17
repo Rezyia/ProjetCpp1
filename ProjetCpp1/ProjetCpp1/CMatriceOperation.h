@@ -16,9 +16,9 @@ public:
 	~CMatriceOperation<Type>();
 
 	// Autres méthodes :
-	CMatriceOperation<Type> operator+(CMatriceOperation<Type> MAOArg);
-	CMatriceOperation<Type> operator-(CMatriceOperation<Type> MAOArg);
-	CMatriceOperation<Type> operator*(CMatriceOperation<Type> MAOArg);
-	CMatriceOperation<Type> operator*(Type varArg);
-	CMatriceOperation<Type> operator/(Type varArg);
+	CMatriceOperation<Type>& operator+(CMatriceOperation<Type> MAOArg);
+	CMatriceOperation<Type>& operator-(CMatriceOperation<Type> MAOArg);
+	CMatriceOperation<Type>& operator*(CMatriceOperation<Type> MAOArg);
+	CMatriceOperation<Type>& operator*(Type varArg);
+	CMatriceOperation<Type>& operator/(Type varArg);
 };

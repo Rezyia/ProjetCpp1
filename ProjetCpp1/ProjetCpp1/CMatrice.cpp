@@ -218,22 +218,22 @@ void CMatrice<Type>::MATModifierNbreLignes(unsigned int uiArg) {
 	//Type* newMat = malloc(typeof(Type) * uiMATNbreColonnes* uiArg);
 	
 	// Allocation nouvelle matrice
-	Type* newMat = (Type**)malloc(uiArg * sizeof(Type*));
+	Type** newMat = (Type**)malloc(uiArg * sizeof(Type*));
 	for (unsigned int uiBoucleAlloc = 0; uiBoucleAlloc < uiArg; uiBoucleAlloc++) {
 		newMat[uiBoucleAlloc] = (Type*)malloc(uiMATNbreColonnes * sizeof(Type));
 	}
 
 	// Initialisation nouvelle matrice par des 0 :
-	for (int i = 0; i < uiArg; i++) {
-		for (int j = 0; j < uiMATNbreColonnes; j++) {
-			newMat[i][j] = 0;
+	for (unsigned int uiInitRow = 0; uiInitRow < uiArg; uiInitRow++) {
+		for (unsigned int uiInitCol = 0; uiInitCol < uiMATNbreColonnes; uiInitCol++) {
+			newMat[uiInitRow][uiInitCol] = 0;
 		}
 	}
 
 	// Copie de MATTableau dans newMat :
-	for (int i = 0; i < std::min(uiArg, uiMATNbreLignes); i++) {
-		for (int j = 0; j < uiMATNbreColonnes; j++) {
-			newMat[i][j] = MATTableau[i][j];
+	for (unsigned int uiInitRow = 0; uiInitRow < uiArg; uiInitRow++) {
+		for (unsigned int uiInitCol = 0; uiInitCol < uiMATNbreColonnes; uiInitCol++) {
+			newMat[uiInitRow][uiInitCol] = MATTableau[uiInitRow][uiInitCol];
 		}
 	}
 
@@ -250,22 +250,22 @@ void CMatrice<Type>::MATModifierNbreColonnes(unsigned int uiArg) {
 	//Type* newMat = malloc(typeof(Type) * uiMATNbreColonnes* uiArg);
 	
 	// Allocation nouvelle matrice
-	Type* newMat = (Type**)malloc(uiMATNbreLignes * sizeof(Type*));
+	Type** newMat = (Type**)malloc(uiMATNbreLignes * sizeof(Type*));
 	for (unsigned int uiBoucleAlloc = 0; uiBoucleAlloc < uiMATNbreLignes; uiBoucleAlloc++) {
 		newMat[uiBoucleAlloc] = (Type*)malloc(uiArg * sizeof(Type));
 	}
 
 	// Initialisation nouvelle matrice par des 0 :
-	for (int i = 0; i < uiArg; i++) {
-		for (int j = 0; j < uiMATNbreColonnes; j++) {
-			newMat[i][j] = 0;
+	for (unsigned int uiInitRow = 0; uiInitRow < uiArg; uiInitRow++) {
+		for (unsigned int uiInitCol = 0; uiInitCol < uiMATNbreColonnes; uiInitCol++) {
+			newMat[uiInitRow][uiInitCol] = 0;
 		}
 	}
 
 	// Copie de MATTableau dans newMat :
-	for (int i = 0; i < uiMATNbreLignes; i++) {
-		for (int j = 0; j < std::min(uiArg, uiMATNbreColonnes); j++) {
-			newMat[i][j] = MATTableau[i][j];
+	for (unsigned int uiInitRow = 0; uiInitRow < uiArg; uiInitRow++) {
+		for (unsigned int uiInitCol = 0; uiInitCol < uiMATNbreColonnes; uiInitCol++) {
+			newMat[uiInitRow][uiInitCol] = MATTableau[uiInitRow][uiInitCol];
 		}
 	}
 

@@ -47,14 +47,30 @@ int main()
 	mat4->MATAfficher();
 
 
-	/*
+	
 	std::cout << "\nTest 5 : opérations :\n";
 
-	CMatriceOperation<int> mat4;
-	mat4 = *mat + *mat2;
+	CMatriceOperation<int>* mat5 = new CMatriceOperation<int>();
 
-	mat4.MATAfficher();
-	*/
+	std::cout << "mat + mat2 :\n";
+	*mat5 = *mat + *mat2;
+	mat5->MATAfficher();
+	
+	std::cout << "mat - mat2 :\n";
+	*mat5 = *mat - *mat2;
+	mat5->MATAfficher();
+
+	std::cout << "mat * mat2 :\n";
+	*mat5 = *mat * *mat2;
+	mat5->MATAfficher();
+
+	std::cout << "mat * 5 :\n";
+	*mat5 = *mat * 5;
+	mat5->MATAfficher();
+
+	std::cout << "mat / 2 :\n";
+	*mat5 = *mat / 2;
+	mat5->MATAfficher();
 
 
 	return 0;
