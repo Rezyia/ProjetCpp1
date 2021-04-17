@@ -3,22 +3,37 @@
 
 #include <iostream>
 #include "CMatriceOperation.h"
-#include "CMatrice.h"
+#include "CMatriceOperation.cpp"
+
 
 int main()
 {
 	std::cout << "Programme compilé, exécution :\n";
 	
-	CMatrice<int> mat = new CMatrice<int>();
+	std::cout << "\nTest 1 : création mat:\n";
+	CMatriceOperation<int>* mat = new CMatriceOperation<int>();
 
-	mat.MATModifierVal(1, 0, 0);
-	mat.MATModifierVal(2, 0, 1);
-	mat.MATModifierVal(3, 1, 0);
-	mat.MATModifierVal(4, 1, 1);
+	mat->MATModifierVal(1, 0, 0);
+	mat->MATModifierVal(2, 0, 1);
+	mat->MATModifierVal(3, 1, 0);
+	mat->MATModifierVal(4, 1, 1);
 
-	mat.MATAfficher();
+	mat->MATAfficher();
+
+
+	std::cout << "\nTest 2 : création mat2:\n";
+	CMatriceOperation<int>* mat2 = new CMatriceOperation<int>(*mat);
+
+	mat2->MATAfficher();
+
 	
+	std::cout << "\nTest 3 : création mat3:\n";
+
+	CMatriceOperation<int> mat3;
+	mat3 = *mat + *mat2;
 	
+	mat3.MATAfficher();
+
 	return 0;
 }
 

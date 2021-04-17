@@ -12,6 +12,8 @@
 // Constructeur par defaut
 template <class Type>
 CMatrice<Type>::CMatrice() { 
+	//std::cout << "Constructeur par défaut :\n";
+
 	uiMATNbreColonnes = NBRE_COLONNES_BASE;
 	uiMATNbreLignes = NBRE_LIGNES_BASE;
 	MATTableau = (Type**)malloc(NBRE_COLONNES_BASE * sizeof(Type*));
@@ -22,13 +24,24 @@ CMatrice<Type>::CMatrice() {
 
 // Constructeur de recopie
 template <class Type>
-CMatrice<Type>::CMatrice(CMatrice<Type> *MATarg) {
-	// WIP / To change :
-	uiMATNbreColonnes = MATarg->MATLireNbreColonnes();
-	uiMATNbreLignes = MATarg->MATLireNbreLignes();
+CMatrice<Type>::CMatrice(CMatrice<Type>& MATarg) {
+	//std::cout << "Constructeur de recopie :\n";
+
+	// Affectation des dimensions :
+	uiMATNbreColonnes = MATarg.MATLireNbreColonnes();
+	uiMATNbreLignes = MATarg.MATLireNbreLignes();
+
+	// Allocation de la matrice :
 	MATTableau = (Type**)malloc(uiMATNbreColonnes * sizeof(Type*));
 	for (unsigned int uiBoucleAlloc = 0; uiBoucleAlloc<uiMATNbreColonnes; uiBoucleAlloc++) {
 		MATTableau[uiBoucleAlloc] = (Type*)malloc(uiMATNbreLignes * sizeof(Type));
+	}
+
+	// Recopie des valeurs :
+	for (unsigned int iBoucleRecopie = 0; iBoucleRecopie < uiMATNbreColonnes; iBoucleRecopie++) {
+		for (unsigned int jBoucleRecopie = 0; jBoucleRecopie < uiMATNbreLignes; jBoucleRecopie++) {
+			MATTableau[iBoucleRecopie][jBoucleRecopie] = MATarg.MATLireVal(iBoucleRecopie, jBoucleRecopie);
+		}
 	}
 }
 
@@ -154,7 +167,6 @@ CMatrice<Type>::CMatrice(char* pcNomFichier)
 			ifsFichier >> cLigne;
 		}
 	}
-
 }
 
 

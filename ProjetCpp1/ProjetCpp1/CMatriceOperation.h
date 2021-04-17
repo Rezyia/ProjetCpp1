@@ -10,7 +10,9 @@ class CMatriceOperation :
 public:
 	// Constructeur:
 	CMatriceOperation<Type>();
-	CMatriceOperation<Type>(CMatriceOperation *MAOcopie);
+	CMatriceOperation<Type>(CMatriceOperation& MATarg);
+	CMatriceOperation<Type>(unsigned int uiiNbCol, unsigned int uiNbRow);
+	CMatriceOperation<Type>(char* pcNomFichier);
 	~CMatriceOperation<Type>();
 
 	// Autres méthodes :

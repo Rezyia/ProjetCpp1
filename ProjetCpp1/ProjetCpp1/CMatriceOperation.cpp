@@ -11,8 +11,41 @@ CMatriceOperation<Type>::CMatriceOperation()
 }
 
 template<class Type>
-CMatriceOperation<Type>::CMatriceOperation(CMatriceOperation * MAOcopie)
+CMatriceOperation<Type>::CMatriceOperation(CMatriceOperation& MATarg)
 {
+	// Affectation des dimensions :
+	CMatrice<Type>::uiMATNbreColonnes = MATarg.MATLireNbreColonnes();
+	CMatrice<Type>::uiMATNbreLignes = MATarg.MATLireNbreLignes();
+
+	// Allocation de la matrice :
+	CMatrice<Type>::MATTableau = (Type**)malloc(CMatrice<Type>::uiMATNbreColonnes * sizeof(Type*));
+	for (unsigned int uiBoucleAlloc = 0; uiBoucleAlloc < CMatrice<Type>::uiMATNbreColonnes; uiBoucleAlloc++) {
+		CMatrice<Type>::MATTableau[uiBoucleAlloc] = (Type*)malloc(CMatrice<Type>::uiMATNbreLignes * sizeof(Type));
+	}
+
+	// Recopie des valeurs :
+	for (unsigned int iBoucleRecopie = 0; iBoucleRecopie < CMatrice<Type>::uiMATNbreColonnes; iBoucleRecopie++) {
+		for (unsigned int jBoucleRecopie = 0; jBoucleRecopie < CMatrice<Type>::uiMATNbreLignes; jBoucleRecopie++) {
+			CMatrice<Type>::MATTableau[iBoucleRecopie][jBoucleRecopie] = MATarg.MATLireVal(iBoucleRecopie, jBoucleRecopie);
+		}
+	}
+}
+
+template<class Type>
+CMatriceOperation<Type>::CMatriceOperation(unsigned int uiNbCol, unsigned int uiNbRow)
+{
+	CMatrice<Type>::uiMATNbreColonnes = uiNbCol;
+	CMatrice<Type>::uiMATNbreLignes = uiNbRow;
+	CMatrice<Type>::MATTableau = (Type**)malloc(uiNbCol * sizeof(Type*));
+	for (unsigned int uiBoucleAlloc = 0; uiBoucleAlloc < uiNbCol; uiBoucleAlloc++) {
+		CMatrice<Type>::MATTableau[uiBoucleAlloc] = (Type*)malloc(uiNbRow * sizeof(Type));
+	}
+}
+
+template<class Type>
+CMatriceOperation<Type>::CMatriceOperation(char* pcNomFichier)
+{
+
 }
 
 template<class Type>
@@ -32,26 +65,29 @@ CMatriceOperation<Type> CMatriceOperation<Type>::operator+(CMatriceOperation<Typ
 {
 	try {
 		
-		if (this->MATLireNbreColonnes() != MAOArg->MATLireNbreColonnes() || this->MATLireNbreLignes() != MAOArg->MATLireNbreLignes()) {
-			CException *EXCerreur;// = new CException(ERROR_TAILLE_MATRICE_DIFF);
-			EXCerreur->EXCModifierErreur(ERROR_TAILLE_MATRICE_DIFF);
+		if (CMatrice<Type>::MATLireNbreColonnes() != MAOArg.MATLireNbreColonnes() || CMatrice<Type>::MATLireNbreLignes() != MAOArg.MATLireNbreLignes()) {
+			CException *EXCerreur = new CException((char*)ERROR_TAILLE_MATRICE_DIFF);
+			//EXCerreur->EXCModifierErreur((char*)ERROR_TAILLE_MATRICE_DIFF);
 			throw(*EXCerreur);
 		}
-		else {
-			unsigned int uiNbCol = this->MATLireNbreColonnes(), uiNbRow = this->MATLireNbreLignes();
-			CMatriceOperation<Type> MAOresult = new CMatriceOperation<Type>(uiNbCol, uiNbRow);
-
-			for (int iBoucleRow = 0; iBoucleRow < uiNbRow; iBoucleRow++) {
-				for (int iBoucleCol = 0; iBoucleCol < uiNbCol; iBoucleCol++) {
-					MAOresult->MATModifierVal(this->MATLireVal(iBoucleRow, iBoucleCol) + MAOArg->MATLireVal(iBoucleRow, iBoucleCol), iBoucleRow, iBoucleCol);
-				}
-			}
-			return MAOresult;
-		}
+		/*else {
+			
+		}*/
+		
 	}
 	catch (CException EXClevee) {
 		std::cout << "Erreur : " << EXClevee.EXCLireErreur() << ".\n";
 	}
+
+	unsigned int uiNbCol = CMatrice<Type>::MATLireNbreColonnes(), uiNbRow = CMatrice<Type>::MATLireNbreLignes();
+	CMatriceOperation<Type>* MAOresult = new CMatriceOperation<Type>(uiNbCol, uiNbRow);
+
+	for (unsigned int uiBoucleRow = 0; uiBoucleRow < uiNbRow; uiBoucleRow++) {
+		for (unsigned int uiBoucleCol = 0; uiBoucleCol < uiNbCol; uiBoucleCol++) {
+			MAOresult->MATModifierVal(CMatrice<Type>::MATLireVal(uiBoucleRow, uiBoucleCol) + MAOArg->MATLireVal(uiBoucleRow, uiBoucleCol), uiBoucleRow, uiBoucleCol);
+		}
+	}
+	return *MAOresult;
 }
 
 /**

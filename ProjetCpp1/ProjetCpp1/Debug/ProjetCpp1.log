@@ -2,5 +2,15 @@
   CMatrice.cpp
   CMatriceOperation.cpp
   ProjetCpp1.cpp
+c:\users\rezyia\desktop\files\etudes\polytech\di3\projet2c++\projetcpp1\projetcpp1\projetcpp1\cmatriceoperation.cpp(87): error C2819: type 'CMatriceOperation<int>' does not have an overloaded member 'operator ->'
+  c:\users\rezyia\desktop\files\etudes\polytech\di3\projet2c++\projetcpp1\projetcpp1\projetcpp1\projetcpp1.cpp(14): note: see declaration of 'CMatriceOperation<int>'
+  c:\users\rezyia\desktop\files\etudes\polytech\di3\projet2c++\projetcpp1\projetcpp1\projetcpp1\cmatriceoperation.cpp(87): note: did you intend to use '.' instead?
+  c:\users\rezyia\desktop\files\etudes\polytech\di3\projet2c++\projetcpp1\projetcpp1\projetcpp1\cmatriceoperation.cpp(65): note: while compiling class template member function 'CMatriceOperation<int> CMatriceOperation<int>::operator +(CMatriceOperation<int>)'
+  c:\users\rezyia\desktop\files\etudes\polytech\di3\projet2c++\projetcpp1\projetcpp1\projetcpp1\projetcpp1.cpp(33): note: see reference to function template instantiation 'CMatriceOperation<int> CMatriceOperation<int>::operator +(CMatriceOperation<int>)' being compiled
+  c:\users\rezyia\desktop\files\etudes\polytech\di3\projet2c++\projetcpp1\projetcpp1\projetcpp1\projetcpp1.cpp(14): note: see reference to class template instantiation 'CMatriceOperation<int>' being compiled
+c:\users\rezyia\desktop\files\etudes\polytech\di3\projet2c++\projetcpp1\projetcpp1\projetcpp1\cmatriceoperation.cpp(87): error C2232: '->CMatrice<Type>::MATLireVal': left operand has 'class' type, use '.'
+          with
+          [
+              Type=int
+          ]
   Generating Code...
-  ProjetCpp1.vcxproj -> C:\Users\rezyia\Desktop\Files\Etudes\Polytech\DI3\Projet2c++\ProjetCpp1\ProjetCpp1\Debug\ProjetCpp1.exe
