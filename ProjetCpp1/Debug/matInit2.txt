@@ -1,0 +1,8 @@
+TypeMatrice=double
+	NBLignes=3
+	NBColonnes=4
+	Matrice=[
+	1 2 3 4
+	2 4 8 16
+	5 -10 15 -20
+]

@@ -9,7 +9,14 @@
 #define NBRE_MAX_CHAMPS_FICHIER 32
 #define NBRE_MAX_LIGNES_FICHIER 255
 
-// Constructeur par defaut
+
+/**
+Constructeur par défaut :
+
+Entrée : Rien
+Nécessite : Rien
+Sortie : une matrice de type Type de dimensions 2x2 avec des valeur non-initialisées :
+**/
 template <class Type>
 CMatrice<Type>::CMatrice() { 
 	//std::cout << "Constructeur par défaut :\n";

@@ -48,7 +48,13 @@ CMatriceOperation<Type>::CMatriceOperation(unsigned int uiNbRow, unsigned int ui
 }
 
 
-// Constructeur par fichier :
+/**
+Constructeur par fichier :
+
+Entrée : Pointeur vers une chaîne de charactères
+Nécessite : Rien
+Sortie : une matrice de type double avec les dimensions et valeurs du fichier si celui-ci a un format correcte et n'a rencontré aucun problème
+**/
 template<class Type>
 CMatriceOperation<Type>::CMatriceOperation(char* pcNomFichier)
 {
@@ -123,10 +129,10 @@ CMatriceOperation<Type>::CMatriceOperation(char* pcNomFichier)
 
 				if (strcmp((const char*)valeurCourrante, "double") == 0) {
 					//this = new CMatriceOperation<double>();
-					std::cout << "type correcte : " << valeurCourrante << std::endl;
+					//std::cout << "type correcte : " << valeurCourrante << std::endl;
 				}
 				else {
-					std::cout << "Le type de matrice n'a pas été accepté (seul le type double est accepté)\n";
+					//std::cout << "Le type de matrice n'a pas été accepté (seul le type double est accepté)\n";
 				}
 				break;
 
@@ -135,7 +141,7 @@ CMatriceOperation<Type>::CMatriceOperation(char* pcNomFichier)
 			case 1:
 				//std::cout << "switch case 1" << std::endl;
 				CMatrice<double>::uiMATNbreLignes = atoi((const char*)valeurCourrante);
-				std::cout << "Nb Lignes = " << valeurCourrante << std::endl;
+				//std::cout << "Nb Lignes = " << valeurCourrante << std::endl;
 				break;
 
 
@@ -143,7 +149,7 @@ CMatriceOperation<Type>::CMatriceOperation(char* pcNomFichier)
 			case 2:
 				//std::cout << "switch case 2" << std::endl;
 				CMatrice<double>::uiMATNbreColonnes = atoi((const char*)valeurCourrante);
-				std::cout << "Nb Colonnes = " << valeurCourrante << std::endl;
+				//std::cout << "Nb Colonnes = " << valeurCourrante << std::endl;
 				break;
 
 
@@ -163,7 +169,7 @@ CMatriceOperation<Type>::CMatriceOperation(char* pcNomFichier)
 				// Retour à la ligne (début des valeurs) :
 				ifsFichier >> cLigne;
 
-				std::cout << "Affectation des valeurs :" << std::endl;
+				//std::cout << "Affectation des valeurs :" << std::endl;
 
 				//std::cout << "max : [" << CMatrice<double>::MATLireNbreLignes()-1 << ";" << CMatrice<double>::MATLireNbreColonnes()-1 << "]\n";
 
@@ -172,8 +178,8 @@ CMatriceOperation<Type>::CMatriceOperation(char* pcNomFichier)
 					while (cBoucleInitMat < CMatrice<double>::MATLireNbreColonnes()) {
 						CMatrice<double>::MATModifierVal(atof(cLigne), lBoucleInitMat, cBoucleInitMat);
 						
-						std::cout << "[" << lBoucleInitMat << ";" << cBoucleInitMat << "] = ";
-						std::cout << cLigne << std::endl;
+						//std::cout << "[" << lBoucleInitMat << ";" << cBoucleInitMat << "] = ";
+						//std::cout << cLigne << std::endl;
 
 						// Passage à la valeur suivante :
 						ifsFichier >> cLigne;
@@ -197,7 +203,7 @@ CMatriceOperation<Type>::CMatriceOperation(char* pcNomFichier)
 			ifsFichier >> cLigne;
 		}
 	}
-	std::cout << "Fin constructeur par fichier. \n";
+	//std::cout << "Fin constructeur par fichier. \n";
 }
 
 template<class Type>
@@ -218,7 +224,7 @@ CMatriceOperation<Type>& CMatriceOperation<Type>::operator+(CMatriceOperation<Ty
 	// Initialisation matrice retour :
 	//std::cout << "Initialisation matrice retour :\n";
 	unsigned int uiNbCol = CMatrice<Type>::MATLireNbreColonnes(), uiNbRow = CMatrice<Type>::MATLireNbreLignes();
-	CMatriceOperation<Type>* MAOresult = new CMatriceOperation<Type>(uiNbCol, uiNbRow);
+	CMatriceOperation<Type>* MAOresult = new CMatriceOperation<Type>(uiNbRow, uiNbCol);
 
 	try {
 		if (CMatrice<Type>::MATLireNbreColonnes() != MAOArg.MATLireNbreColonnes() || CMatrice<Type>::MATLireNbreLignes() != MAOArg.MATLireNbreLignes()) {
@@ -257,7 +263,7 @@ CMatriceOperation<Type>& CMatriceOperation<Type>::operator-(CMatriceOperation<Ty
 	// Initialisation matrice retour :
 	//std::cout << "Initialisation matrice retour :\n";
 	unsigned int uiNbCol = CMatrice<Type>::MATLireNbreColonnes(), uiNbRow = CMatrice<Type>::MATLireNbreLignes();
-	CMatriceOperation<Type>* MAOresult = new CMatriceOperation<Type>(uiNbCol, uiNbRow);
+	CMatriceOperation<Type>* MAOresult = new CMatriceOperation<Type>(uiNbRow, uiNbCol);
 
 	try {
 		if (CMatrice<Type>::MATLireNbreColonnes() != MAOArg.MATLireNbreColonnes() || CMatrice<Type>::MATLireNbreLignes() != MAOArg.MATLireNbreLignes()) {
@@ -295,17 +301,20 @@ CMatriceOperation<Type>& CMatriceOperation<Type>::operator*(CMatriceOperation<Ty
 {
 	// Initialisation matrice retour :
 	//std::cout << "Initialisation matrice retour :\n";
-	unsigned int uiNbCol = CMatrice<Type>::MATLireNbreColonnes(), uiNbRow = CMatrice<Type>::MATLireNbreLignes();
-	CMatriceOperation<Type>* MAOresult = new CMatriceOperation<Type>(uiNbCol, uiNbRow);
+	unsigned int uiNbCol = MAOArg.CMatrice<Type>::MATLireNbreColonnes(), uiNbRow = CMatrice<Type>::MATLireNbreLignes();
+	CMatriceOperation<Type>* MAOresult = new CMatriceOperation<Type>(uiNbRow, uiNbCol);
+
+	std::cout << "test1";
 
 	try {
-		if (CMatrice<Type>::MATLireNbreColonnes() != MAOArg.MATLireNbreColonnes() || CMatrice<Type>::MATLireNbreLignes() != MAOArg.MATLireNbreLignes()) {
-			CException *EXCerreur = new CException((char*)ERROR_TAILLE_MATRICE_DIFF);
+		if (CMatrice<Type>::MATLireNbreColonnes() != MAOArg.CMatrice<Type>::MATLireNbreLignes()) {
+			std::cout << "test2";
 			//EXCerreur->EXCModifierErreur((char*)ERROR_TAILLE_MATRICE_DIFF);
-			throw(*EXCerreur);
+			throw new CException((char*)ERROR_TAILLE_MATRICE_DIFF);;
+			std::cout << "test3";
 		}
+		std::cout << "test4";
 		Type tResultatCase;
-
 		for (unsigned int uiBoucleRow = 0; uiBoucleRow < uiNbRow; uiBoucleRow++) {
 			for (unsigned int uiBoucleCol = 0; uiBoucleCol < uiNbCol; uiBoucleCol++) {
 				for (unsigned int uiBoucle = 0; uiBoucle < CMatrice<Type>::MATLireNbreColonnes(); uiBoucle++) {
@@ -321,8 +330,10 @@ CMatriceOperation<Type>& CMatriceOperation<Type>::operator*(CMatriceOperation<Ty
 		}
 	}
 	catch (CException EXClevee) {
+		std::cout << "test5";
 		std::cout << "Erreur : " << EXClevee.EXCLireErreur() << ".\n";
 	}
+	std::cout << "test";
 
 	return *MAOresult;
 }
@@ -337,17 +348,16 @@ Sortie : une matrice de type Type de même taille et dont chaque case[i][j] est 
 template<class Type>
 CMatriceOperation<Type>& CMatriceOperation<Type>::operator*(Type varArg)
 {
-	CMatriceOperation<Type>* MAOresult = new CMatriceOperation<Type>();
 	unsigned int uiNbLignes = CMatrice<Type>::MATLireNbreLignes();
 	unsigned int uiNbColonnes = CMatrice<Type>::MATLireNbreColonnes();
-	MAOresult->MATModifierNbreColonnes(uiNbColonnes);
-	MAOresult->MATModifierNbreLignes(uiNbLignes);
+	CMatriceOperation<Type>* MAOresult = new CMatriceOperation<Type>(uiNbLignes, uiNbColonnes);
 
 	unsigned int uiBoucleLigne;
 	unsigned int uiBoucleColonne;
-	for (uiBoucleColonne = 0; uiBoucleColonne < uiNbColonnes; uiBoucleColonne++) {
-		for (uiBoucleLigne = 0; uiBoucleLigne < uiNbLignes; uiBoucleLigne++) {
-			MAOresult->MATModifierVal(CMatrice<Type>::MATLireVal(uiBoucleColonne, uiBoucleLigne)*varArg, uiBoucleColonne, uiBoucleLigne);
+
+	for (uiBoucleLigne = 0; uiBoucleLigne < uiNbLignes; uiBoucleLigne++) {
+		for (uiBoucleColonne = 0; uiBoucleColonne < uiNbColonnes; uiBoucleColonne++) {
+			MAOresult->MATModifierVal(CMatrice<Type>::MATLireVal(uiBoucleLigne, uiBoucleColonne)*varArg, uiBoucleLigne, uiBoucleColonne);
 		}
 	}
 	return *MAOresult;
@@ -363,17 +373,16 @@ Sortie : une matrice de type Type de même taille et dont chaque case[i][j] est 
 template<class Type>
 CMatriceOperation<Type>& CMatriceOperation<Type>::operator/(Type varArg)
 {
-	CMatriceOperation<Type>* MAOresult = new CMatriceOperation<Type>();
 	unsigned int uiNbLignes = CMatrice<Type>::MATLireNbreLignes();
 	unsigned int uiNbColonnes = CMatrice<Type>::MATLireNbreColonnes();
-	MAOresult->MATModifierNbreColonnes(uiNbColonnes);
-	MAOresult->MATModifierNbreLignes(uiNbLignes);
+	CMatriceOperation<Type>* MAOresult = new CMatriceOperation<Type>(uiNbLignes, uiNbColonnes);
 
 	unsigned int uiBoucleLigne;
 	unsigned int uiBoucleColonne;
-	for (uiBoucleColonne = 0; uiBoucleColonne < uiNbColonnes; uiBoucleColonne++) {
-		for (uiBoucleLigne = 0; uiBoucleLigne < uiNbLignes; uiBoucleLigne++) {
-			MAOresult->MATModifierVal(CMatrice<Type>::MATLireVal(uiBoucleColonne, uiBoucleLigne)/varArg, uiBoucleColonne, uiBoucleLigne);
+
+	for (uiBoucleLigne = 0; uiBoucleLigne < uiNbLignes; uiBoucleLigne++) {
+		for (uiBoucleColonne = 0; uiBoucleColonne < uiNbColonnes; uiBoucleColonne++) {
+			MAOresult->MATModifierVal(CMatrice<Type>::MATLireVal(uiBoucleLigne, uiBoucleColonne)/varArg, uiBoucleLigne, uiBoucleColonne);
 		}
 	}
 	return *MAOresult;

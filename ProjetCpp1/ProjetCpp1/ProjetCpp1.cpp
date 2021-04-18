@@ -6,72 +6,76 @@
 #include "CMatriceOperation.cpp"
 
 
-int main()
-{
-	std::cout << "Programme compilé, exécution :\n";
-	
+int main(int argc, char* argv[]) {
 
-	std::cout << "\nTest 1 : création mat:\n";
-	CMatriceOperation<int>* mat = new CMatriceOperation<int>();
+	if (argc < 2) {
+		std::cout << "Erreur : veuillez mettre au moins un fichier en paramètre.\n";
+		exit(EXIT_FAILURE);
+	}
 
-	mat->MATModifierVal(1, 0, 0);
-	mat->MATModifierVal(2, 0, 1);
-	mat->MATModifierVal(3, 1, 0);
-	mat->MATModifierVal(4, 1, 1);
-
-	mat->MATAfficher();
+	CMatriceOperation<double>** tCMatrices = (CMatriceOperation<double>**)malloc((argc-2) * sizeof(CMatriceOperation<double>*));
 
 
-	std::cout << "\nTest 2 : création mat2:\n";
-	CMatriceOperation<int>* mat2 = new CMatriceOperation<int>(*mat);
+	// •	Pour chaque nom de fichier passé en paramètre, lire le fichier et créer la matrice associée,
+	for (int iBoucleInitFichier = 1; iBoucleInitFichier < argc; iBoucleInitFichier++) {
+		tCMatrices[iBoucleInitFichier-1] = new CMatriceOperation<double>(argv[iBoucleInitFichier]);
+	}
 
-	mat2->MATAfficher();
+	double c;
+	CMatriceOperation<double>* CMatTemp = new CMatriceOperation<double>();
 
-	
-	std::cout << "\nTest 3 : création mat3:\n";
-	CMatriceOperation<double>* mat3 = new CMatriceOperation<double>(3,2);
+	// •	Demander à l’utilisateur de saisir une valeur c,
+	std::cout << "Entrez une valeur c : ";
+	std::cin >> c;
 
-	mat3->MATModifierVal(1.1, 0, 0);
-	mat3->MATModifierVal(2.2, 0, 1);
-	mat3->MATModifierVal(3.0, 1, 0);
-	mat3->MATModifierVal(4.5, 1, 1);
-	mat3->MATModifierVal(5.0, 2, 0);
-	mat3->MATModifierVal(6  , 2, 1);
+	// •	Afficher le résultat de la multiplication de chacune des matrices par la valeur c, 
+	for (int iBoucleCalculs = 0; iBoucleCalculs < argc-1; iBoucleCalculs++) {
+		std::cout << "\nMatrice n°" << iBoucleCalculs + 1 << " :\n";
 
-	mat3->MATAfficher();
+		*CMatTemp = *tCMatrices[iBoucleCalculs] * c;
+		CMatTemp->MATAfficher();
+	}
 
+	// •	Afficher le résultat de la division de chacune des matrices par la valeur c, 
+	for (int iBoucleCalculs = 0; iBoucleCalculs < argc - 1; iBoucleCalculs++) {
+		std::cout << "\nMatrice n°" << iBoucleCalculs + 1 << " :\n";
 
-	std::cout << "\nTest 4 : création mat4:\n";
-	CMatriceOperation<double>* mat4 = new CMatriceOperation<double>((char*)"matInit.txt");
+		*CMatTemp = *tCMatrices[iBoucleCalculs] / c;
+		CMatTemp->MATAfficher();
+	}
 
-	mat4->MATAfficher();
+	// •	Afficher le résultat de l’addition de toutes les matrices entre elles : M1+M2+M3+….,
+	CMatTemp = new CMatriceOperation<double>(*tCMatrices[0]);
+	for (int iBoucleCalculs = 1; iBoucleCalculs < argc-1; iBoucleCalculs++) {
+		*CMatTemp = *CMatTemp + *tCMatrices[iBoucleCalculs];
+	}
 
+	std::cout << "\nSomme des matrices :\n";
+	CMatTemp->MATAfficher();
 
-	
-	std::cout << "\nTest 5 : opérations :\n";
+	// •	Afficher le résultat de l’opération suivante : M1 - M2 + M3 - M4 + M5 - M6 + ….
+	CMatTemp = new CMatriceOperation<double>(*tCMatrices[0]);
+	for (int iBoucleCalculs = 1; iBoucleCalculs < argc - 1; iBoucleCalculs++) {
+		if (iBoucleCalculs % 2 == 0) {
+			*CMatTemp = *CMatTemp + *tCMatrices[iBoucleCalculs];
+		}
+		else {
+			*CMatTemp = *CMatTemp - *tCMatrices[iBoucleCalculs];
+		}
+	}
 
-	CMatriceOperation<int>* mat5 = new CMatriceOperation<int>();
+	std::cout << "\nAlternance - et + des matrices :\n";
+	CMatTemp->MATAfficher();
 
-	std::cout << "mat + mat2 :\n";
-	*mat5 = *mat + *mat2;
-	mat5->MATAfficher();
-	
-	std::cout << "mat - mat2 :\n";
-	*mat5 = *mat - *mat2;
-	mat5->MATAfficher();
+	// •	Afficher le résultat du produit des matrices.
+	CMatTemp = new CMatriceOperation<double>(*tCMatrices[0]);
+	for (int iBoucleCalculs = 1; iBoucleCalculs < argc - 1; iBoucleCalculs++) {
+		*CMatTemp = *CMatTemp * *tCMatrices[iBoucleCalculs];
 
-	std::cout << "mat * mat2 :\n";
-	*mat5 = *mat * *mat2;
-	mat5->MATAfficher();
+	}
 
-	std::cout << "mat * 5 :\n";
-	*mat5 = *mat * 5;
-	mat5->MATAfficher();
-
-	std::cout << "mat / 2 :\n";
-	*mat5 = *mat / 2;
-	mat5->MATAfficher();
-
+	std::cout << "\nProduit des matrices : \n";
+	CMatTemp->MATAfficher();
 
 	return 0;
 }
