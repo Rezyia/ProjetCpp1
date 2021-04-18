@@ -5,14 +5,30 @@
 #define ERROR_TAILLE_MATRICE_DIFF "Les matrices ne sont pas de même dimensions"
 #define ERROR_TAILLE_MATRICE_IMCOMPATIBLE "Les matrices ne peuvent pas être multipliées entre elles"
 
-// Constructeur par défaut :
+/**********************************************************************************
+
+							Constructeur Par défaut
+
+Entrée :	Rien
+Nécessite :	Rien
+Sortie :	Une matrice de type Type de dimensions NBRE_LIGNES_BASE * NBRE_COLONNES_BASE
+			(voir CMatrice.cpp ou CMatrice.h) avec des valeurs non-initialisées
+**********************************************************************************/
 template<class Type>
 CMatriceOperation<Type>::CMatriceOperation()
 {
 }
 
 
-// Constructeur de recopie :
+/**********************************************************************************
+
+							Constructeur de recopie
+
+Entrée :	Adresse d'une autre CMatriceOperation
+Nécessite :	Rien
+Sortie :	Une matrice de type Type de même dimensions que celle passée en
+			paramètre et de même valeurs de matrice.
+**********************************************************************************/
 template<class Type>
 CMatriceOperation<Type>::CMatriceOperation(CMatriceOperation& MATarg)
 {
@@ -35,7 +51,14 @@ CMatriceOperation<Type>::CMatriceOperation(CMatriceOperation& MATarg)
 }
 
 
-// Constructeur avec paramètres lignes et colonnes :
+/**********************************************************************************
+
+					Constructeur avec nombre de lignes et colonnes :
+
+Entrée :	Nombre de lignes (uiNbRow) et nombre de colonnes (uiNbCol)
+Nécessite :	Rien
+Sortie :	Une matrice de type Type de dimensions uiNbRow * uiNbCol.
+**********************************************************************************/
 template<class Type>
 CMatriceOperation<Type>::CMatriceOperation(unsigned int uiNbRow, unsigned int uiNbCol)
 {
@@ -48,13 +71,16 @@ CMatriceOperation<Type>::CMatriceOperation(unsigned int uiNbRow, unsigned int ui
 }
 
 
-/**
-Constructeur par fichier :
 
-Entrée : Pointeur vers une chaîne de charactères
-Nécessite : Rien
-Sortie : une matrice de type double avec les dimensions et valeurs du fichier si celui-ci a un format correcte et n'a rencontré aucun problème
-**/
+/**********************************************************************************
+
+							Constructeur par fichier :
+
+Entrée :	Pointeur vers une chaîne de charactères
+Nécessite :	Rien
+Sortie :	Une matrice de type double avec les dimensions et valeurs inscrites
+			dans le fichier.
+**********************************************************************************/
 template<class Type>
 CMatriceOperation<Type>::CMatriceOperation(char* pcNomFichier)
 {

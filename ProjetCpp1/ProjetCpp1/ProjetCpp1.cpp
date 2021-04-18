@@ -8,11 +8,19 @@
 
 int main(int argc, char* argv[]) {
 
+	/**********************************************************************************
+
+					Partie déclarations et initialisations du programme :
+
+	**********************************************************************************/
+
+	// Vérification : au moins 1 argument
 	if (argc < 2) {
 		std::cout << "Erreur : veuillez mettre au moins un fichier en paramètre.\n";
 		exit(EXIT_FAILURE);
 	}
 
+	// Allocation de l'array des matrices CMatriceOperation :
 	CMatriceOperation<double>** tCMatrices = (CMatriceOperation<double>**)malloc((argc-2) * sizeof(CMatriceOperation<double>*));
 
 
@@ -21,12 +29,22 @@ int main(int argc, char* argv[]) {
 		tCMatrices[iBoucleInitFichier-1] = new CMatriceOperation<double>(argv[iBoucleInitFichier]);
 	}
 
+	// Déclaration et Initialisation des variables :
 	double c;
 	CMatriceOperation<double>* CMatTemp = new CMatriceOperation<double>();
+
+
+	/**********************************************************************************
+
+							Partie principale du programme :
+
+	**********************************************************************************/
+
 
 	// •	Demander à l’utilisateur de saisir une valeur c,
 	std::cout << "Entrez une valeur c : ";
 	std::cin >> c;
+
 
 	// •	Afficher le résultat de la multiplication de chacune des matrices par la valeur c, 
 	std::cout << "\n ### Multiplication des matrices par " << c << ": ###\n";
@@ -38,6 +56,7 @@ int main(int argc, char* argv[]) {
 		CMatTemp->MATAfficher();
 	}
 
+
 	// •	Afficher le résultat de la division de chacune des matrices par la valeur c,
 	std::cout << "\n ### Divisions des matrices par " << c << ": ###\n";
 
@@ -47,6 +66,7 @@ int main(int argc, char* argv[]) {
 		*CMatTemp = *tCMatrices[iBoucleCalculs] / c;
 		CMatTemp->MATAfficher();
 	}
+
 
 	// •	Afficher le résultat de l’addition de toutes les matrices entre elles : M1+M2+M3+….,
 	std::cout << "\n ### Somme des matrices : ###\n";
@@ -82,6 +102,12 @@ int main(int argc, char* argv[]) {
 
 	}
 	CMatTemp->MATAfficher();
+
+	/**********************************************************************************
+
+									Fin du programme :
+
+	**********************************************************************************/
 
 	return 0;
 }
