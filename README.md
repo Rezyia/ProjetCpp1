@@ -7,7 +7,7 @@ Avec cmd :
 ```
 ProjetCpp1.exe <Fichier1> [<Fichier2> <Fichier3> <Fichier4> ... <FichierN>]
 ```
-Le fichier utilisé doit respecter le format suivant :
+Les fichiers utilisés doivent respecter le format suivant :
 
 ```
 TypeMatrice=double
@@ -48,7 +48,7 @@ Contient le code source du projet Matrice.
 
 4a. Se connecter (si demandé)
 
-Pour mettre à jour vos fichiers locaux à partir des fichiers du projet :
+## Pour mettre à jour vos fichiers locaux à partir des fichiers du projet :
 
 Etape 1a.
 
@@ -58,7 +58,7 @@ Etape 1a.
 
 Etape 4a.
 
-Pour mettre à jour certains fichier du projet à partir de vos fichiers locaux :
+## Pour mettre à jour certains fichier du projet à partir de vos fichiers locaux :
 
 Etape 1a.
 
