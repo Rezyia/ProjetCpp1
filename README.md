@@ -21,8 +21,6 @@ TypeMatrice=double
 
 	V20 V21 V22 ... V2Y
 
-	V30 V31 V32 ... V3Y
-
 	... ... ... ... ...
 
 	VX0 VX1 VX2 ... VXY
