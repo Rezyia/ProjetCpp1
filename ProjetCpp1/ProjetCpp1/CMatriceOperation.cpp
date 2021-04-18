@@ -304,16 +304,11 @@ CMatriceOperation<Type>& CMatriceOperation<Type>::operator*(CMatriceOperation<Ty
 	unsigned int uiNbCol = MAOArg.CMatrice<Type>::MATLireNbreColonnes(), uiNbRow = CMatrice<Type>::MATLireNbreLignes();
 	CMatriceOperation<Type>* MAOresult = new CMatriceOperation<Type>(uiNbRow, uiNbCol);
 
-	std::cout << "test1";
 
 	try {
 		if (CMatrice<Type>::MATLireNbreColonnes() != MAOArg.CMatrice<Type>::MATLireNbreLignes()) {
-			std::cout << "test2";
-			//EXCerreur->EXCModifierErreur((char*)ERROR_TAILLE_MATRICE_DIFF);
-			throw new CException((char*)ERROR_TAILLE_MATRICE_DIFF);;
-			std::cout << "test3";
+			throw(CException((char*)ERROR_TAILLE_MATRICE_DIFF));
 		}
-		std::cout << "test4";
 		Type tResultatCase;
 		for (unsigned int uiBoucleRow = 0; uiBoucleRow < uiNbRow; uiBoucleRow++) {
 			for (unsigned int uiBoucleCol = 0; uiBoucleCol < uiNbCol; uiBoucleCol++) {
@@ -329,11 +324,9 @@ CMatriceOperation<Type>& CMatriceOperation<Type>::operator*(CMatriceOperation<Ty
 			}
 		}
 	}
-	catch (CException EXClevee) {
-		std::cout << "test5";
+	catch (CException& EXClevee) {
 		std::cout << "Erreur : " << EXClevee.EXCLireErreur() << ".\n";
 	}
-	std::cout << "test";
 
 	return *MAOresult;
 }

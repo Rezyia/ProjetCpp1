@@ -29,6 +29,8 @@ int main(int argc, char* argv[]) {
 	std::cin >> c;
 
 	// •	Afficher le résultat de la multiplication de chacune des matrices par la valeur c, 
+	std::cout << "\n ### Multiplication des matrices par " << c << ": ###\n";
+
 	for (int iBoucleCalculs = 0; iBoucleCalculs < argc-1; iBoucleCalculs++) {
 		std::cout << "\nMatrice n°" << iBoucleCalculs + 1 << " :\n";
 
@@ -36,7 +38,9 @@ int main(int argc, char* argv[]) {
 		CMatTemp->MATAfficher();
 	}
 
-	// •	Afficher le résultat de la division de chacune des matrices par la valeur c, 
+	// •	Afficher le résultat de la division de chacune des matrices par la valeur c,
+	std::cout << "\n ### Divisions des matrices par " << c << ": ###\n";
+
 	for (int iBoucleCalculs = 0; iBoucleCalculs < argc - 1; iBoucleCalculs++) {
 		std::cout << "\nMatrice n°" << iBoucleCalculs + 1 << " :\n";
 
@@ -45,15 +49,18 @@ int main(int argc, char* argv[]) {
 	}
 
 	// •	Afficher le résultat de l’addition de toutes les matrices entre elles : M1+M2+M3+….,
+	std::cout << "\n ### Somme des matrices : ###\n";
+
 	CMatTemp = new CMatriceOperation<double>(*tCMatrices[0]);
 	for (int iBoucleCalculs = 1; iBoucleCalculs < argc-1; iBoucleCalculs++) {
 		*CMatTemp = *CMatTemp + *tCMatrices[iBoucleCalculs];
 	}
-
-	std::cout << "\nSomme des matrices :\n";
 	CMatTemp->MATAfficher();
 
+
 	// •	Afficher le résultat de l’opération suivante : M1 - M2 + M3 - M4 + M5 - M6 + ….
+	std::cout << "\n ### Alternance - et + des matrices : ###\n";
+
 	CMatTemp = new CMatriceOperation<double>(*tCMatrices[0]);
 	for (int iBoucleCalculs = 1; iBoucleCalculs < argc - 1; iBoucleCalculs++) {
 		if (iBoucleCalculs % 2 == 0) {
@@ -63,18 +70,17 @@ int main(int argc, char* argv[]) {
 			*CMatTemp = *CMatTemp - *tCMatrices[iBoucleCalculs];
 		}
 	}
-
-	std::cout << "\nAlternance - et + des matrices :\n";
 	CMatTemp->MATAfficher();
 
+
 	// •	Afficher le résultat du produit des matrices.
+	std::cout << "\nProduit des matrices : \n";
+
 	CMatTemp = new CMatriceOperation<double>(*tCMatrices[0]);
 	for (int iBoucleCalculs = 1; iBoucleCalculs < argc - 1; iBoucleCalculs++) {
 		*CMatTemp = *CMatTemp * *tCMatrices[iBoucleCalculs];
 
 	}
-
-	std::cout << "\nProduit des matrices : \n";
 	CMatTemp->MATAfficher();
 
 	return 0;
