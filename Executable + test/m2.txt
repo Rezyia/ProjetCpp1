@@ -1,0 +1,9 @@
+TypeMatrice=double
+	NBLignes=4
+	NBColonnes=4
+	Matrice=[
+	7 3 9 6
+	1 0 9 1
+	4 7 0 3
+	0 4 7 5
+]
