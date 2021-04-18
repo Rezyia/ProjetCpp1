@@ -5,17 +5,29 @@ Projet Tutoré 1 Cpp Polytech Tours DI3
 Contient le fichier exécutable ainsi que des fichiers d'exemple de matrices.
 Avec cmd : ProjetCpp1.exe <Fichier1> [<Fichier2> <Fichier3> <Fichier4> ... <FichierN>]
 Le fichier utilisé doit respecter le format suivant :
+
 TypeMatrice=double
+
 	NBLignes=X
+
 	NBColonnes=Y
+
 	Matrice=[
+
 	V00 V01 V02 ... V0Y
+
 	V10 V11 V12 ... V1Y
+
 	V20 V21 V22 ... V2Y
+
 	V30 V31 V32 ... V3Y
+
 	... ... ... ... ...
+
 	VX0 VX1 VX2 ... VXY
+
 ]
+
 avec VXY la valeur aux coordonnées [X;Y]
 
 
