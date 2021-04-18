@@ -253,7 +253,7 @@ CMatrice<Type>::~CMatrice() {
 
 //Fonction pour obtenir la transpos� d'une matrice quelconque
 template <class Type>
-CMatrice<Type> CMatrice<Type>::MATTransposer() {
+CMatrice<Type>& CMatrice<Type>::MATTransposer() {
 	CMatrice<Type> *MATtmp = new CMatrice<Type>(MATLireNbreColonnes(), MATLireNbreLignes());
 	//MATtmp->MATModifierNbreColonnes(MATLireNbreLignes());
 	//MATtmp->MATModifierNbreLignes(MATLireNbreColonnes());

@@ -15,7 +15,7 @@ public:
 	CMatrice<Type>(unsigned int uiNbCol, unsigned int uiNbRow);
 	CMatrice<Type>(char* pcNomFichier);
 	~CMatrice<Type>();
-	CMatrice<Type> MATTransposer();
+	CMatrice<Type>& MATTransposer();
 	void MATAfficher();
 
 

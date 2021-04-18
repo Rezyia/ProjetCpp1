@@ -11,7 +11,7 @@ public:
 	// Constructeur:
 	CMatriceOperation<Type>();
 	CMatriceOperation<Type>(CMatriceOperation& MATarg);
-	CMatriceOperation<Type>(unsigned int uiiNbCol, unsigned int uiNbRow);
+	CMatriceOperation<Type>(unsigned int uiNbRow, unsigned int uiNbCol);
 	CMatriceOperation<Type>(char* pcNomFichier);
 	~CMatriceOperation<Type>();
 
