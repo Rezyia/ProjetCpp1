@@ -1,11 +1,12 @@
 # ProjetCpp1
 Projet Tutoré 1 Cpp Polytech Tours DI3
 
-```## Executable + test :
+## Executable + test :
 Contient le fichier exécutable ainsi que des fichiers d'exemple de matrices.
 Avec cmd : ProjetCpp1.exe <Fichier1> [<Fichier2> <Fichier3> <Fichier4> ... <FichierN>]
 Le fichier utilisé doit respecter le format suivant :
 
+```
 TypeMatrice=double
 
 	NBLignes=X
@@ -26,7 +27,8 @@ TypeMatrice=double
 
 	VX0 VX1 VX2 ... VXY
 
-]```
+]
+```
 
 avec VXY la valeur aux coordonnées [X;Y]
 
