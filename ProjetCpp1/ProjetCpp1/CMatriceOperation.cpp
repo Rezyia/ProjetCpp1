@@ -407,3 +407,28 @@ CMatriceOperation<Type>& CMatriceOperation<Type>::operator/(Type varArg)
 	return *MAOresult;
 }
 
+template<class Type>
+bool CMatriceOperation<Type>::MAOIsMatriceTridiagonale()
+{
+	bool bResult = MATIsMatriceCarre();
+	
+	unsigned int uiBoucleLigne = 0;
+	unsigned int uiBoucleColonne = 0;
+
+	while (uiBoucleLigne < MATLireNbreLignes() && bResult) {
+		while (uiBoucleColonne < MATLireNbreColonnes() && bResult) {
+			int iDiffColLigne = uiBoucleLigne - uiBoucleColonne;
+			if (iDiffColLigne < 0) {
+				iDiffColLigne *= -1;
+			}
+			if (iDiffColLigne > 1 && MATLireVal(uiBoucleLigne, uiBoucleColonne) != 0) {
+				bResult = false;
+			}
+			uiBoucleColonne++;
+		}
+		uiBoucleLigne++;
+	}
+
+	return bResult;
+}
+

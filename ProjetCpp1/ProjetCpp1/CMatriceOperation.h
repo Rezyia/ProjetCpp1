@@ -21,4 +21,6 @@ public:
 	CMatriceOperation<Type>& operator*(CMatriceOperation<Type> MAOArg);
 	CMatriceOperation<Type>& operator*(Type varArg);
 	CMatriceOperation<Type>& operator/(Type varArg);
+
+	bool MAOIsMatriceTridiagonale();
 };

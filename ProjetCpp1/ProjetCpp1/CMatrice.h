@@ -38,4 +38,8 @@ public:
 		return MATTableau[uiNumLig][uiNumCol];
 	}
 
+	bool MATIsMatriceCarre() {
+		return  uiMATNbreColonnes == uiMATNbreLignes;
+	}
+
 };
