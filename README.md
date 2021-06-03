@@ -1,5 +1,5 @@
 # ProjetCpp1
-Projet Tutoré 1 Cpp Polytech Tours DI3
+Projet Tutoré 1 Cpp Polytech Tours DI3 (Fini le Dimanche 18 Avril 2021)
 
 ## Executable + test :
 Contient le fichier exécutable ainsi que des fichiers d'exemple de matrices.
