@@ -362,3 +362,18 @@ void CMatrice<Type>::MATModifierNbreColonnes(unsigned int uiArg) {
 	free(MATTableau);
 	MATTableau = newMat;
 }
+
+
+template <class Type>
+CMatrice<Type>& CMatrice<Type>::MATGetSousMatrice(unsigned int uiNewNbCol, unsigned int uiNewNbRow) {
+	CMatrice<Type>* MATNewMatrice = new CMatrice(uiNewNbCol, uiNewNbRow);
+
+	for (unsigned int uiInitRow = 0; uiInitRow < uiNewNbRow; uiInitRow++) {
+		for (unsigned int uiInitCol = 0; uiInitCol < uiNewNbCol; uiInitCol++) {
+			Type currentVal = MATLireVal(uiInitRow, uiInitCol);
+			MATNewMatrice.MATModifierVal(currentVal, uiInitRow, uiInitCol);
+		}
+	}
+	return *MATNewMatrice;
+}
+
