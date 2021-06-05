@@ -5,6 +5,9 @@
 #define ERROR_TAILLE_MATRICE_DIFF "Les matrices ne sont pas de même dimensions"
 #define ERROR_TAILLE_MATRICE_IMCOMPATIBLE "Les matrices ne peuvent pas être multipliées entre elles"
 
+#define ERROR_NON_TRIDIAGONALE "La matrice n'est pas tridiagonale"
+
+
 /**********************************************************************************
 
 							Constructeur Par défaut
@@ -364,7 +367,7 @@ Entrée : un objet varArg de classe Type
 Nécessite : La matrice est de type Type
 Sortie : une matrice de type Type de même taille et dont chaque case[i][j] est égale au produit de varArg et de la cases[i][j] de la matrices
 **/
-template<class Type>
+template <class Type>
 CMatriceOperation<Type>& CMatriceOperation<Type>::operator*(Type varArg)
 {
 	unsigned int uiNbLignes = CMatrice<Type>::MATLireNbreLignes();
@@ -389,7 +392,7 @@ Entrée : un objet varArg de classe Type
 Nécessite : La matrice est de type Type
 Sortie : une matrice de type Type de même taille et dont chaque case[i][j] est égale au quotient de varArg et de la cases[i][j] de la matrices
 **/
-template<class Type>
+template <class Type>
 CMatriceOperation<Type>& CMatriceOperation<Type>::operator/(Type varArg)
 {
 	unsigned int uiNbLignes = CMatrice<Type>::MATLireNbreLignes();
@@ -407,21 +410,40 @@ CMatriceOperation<Type>& CMatriceOperation<Type>::operator/(Type varArg)
 	return *MAOresult;
 }
 
-template<class Type>
+
+template <class Type>
+CMatriceOperation<Type>& CMatriceOperation<Type>::MATGetSousMatrice(unsigned int uiNewNbCol, unsigned int uiNewNbRow) {
+	/*if (uiNewNbCol >= uiMATNbreColonnes || uiNewNbRow >= uiMATNbreLignes) {
+		throw(CException((char*)ERROR_PARAMETRES_INCORRECTS));
+	}*/
+	CMatriceOperation<Type>* MAONewMatrice = new CMatriceOperation(uiNewNbCol, uiNewNbRow);
+
+	for (unsigned int uiInitRow = 0; uiInitRow < uiNewNbRow; uiInitRow++) {
+		for (unsigned int uiInitCol = 0; uiInitCol < uiNewNbCol; uiInitCol++) {
+			Type currentVal = CMatrice<Type>::MATLireVal(uiInitRow, uiInitCol);
+			MAONewMatrice->MATModifierVal(currentVal, uiInitRow, uiInitCol);
+		}
+	}
+	return *MAONewMatrice;
+}
+
+
+
+template <class Type>
 bool CMatriceOperation<Type>::MAOIsMatriceTridiagonale()
 {
-	bool bResult = CMatrice::MATIsMatriceCarre();
+	bool bResult = CMatrice<Type>::MATIsMatriceCarre();
 	
 	unsigned int uiBoucleLigne = 0;
 	unsigned int uiBoucleColonne = 0;
 
-	while (uiBoucleLigne < CMatrice::MATLireNbreLignes() && bResult) {
-		while (uiBoucleColonne < CMatrice::MATLireNbreColonnes() && bResult) {
+	while (uiBoucleLigne < CMatrice<Type>::uiMATNbreLignes && bResult) {
+		while (uiBoucleColonne < CMatrice<Type>::uiMATNbreColonnes && bResult) {
 			int iDiffColLigne = uiBoucleLigne - uiBoucleColonne;
 			if (iDiffColLigne < 0) {
 				iDiffColLigne *= -1;
 			}
-			if (iDiffColLigne > 1 && CMatrice::MATLireVal(uiBoucleLigne, uiBoucleColonne) != 0) {
+			if (iDiffColLigne > 1 && CMatrice<Type>::MATLireVal(uiBoucleLigne, uiBoucleColonne) != 0) {
 				bResult = false;
 			}
 			uiBoucleColonne++;
@@ -430,5 +452,34 @@ bool CMatriceOperation<Type>::MAOIsMatriceTridiagonale()
 	}
 
 	return bResult;
+}
+
+
+template <class Type>
+Type CMatriceOperation<Type>::MAODeterminantTridiagonale() {
+	Type det = 0;
+	try {
+		if (!MAOIsMatriceTridiagonale()) {
+			throw(CException((char*)ERROR_NON_TRIDIAGONALE));
+		}
+		if (CMatrice<Type>::uiMATNbreLignes == 2 /*&& CMatrice<Type>::uiMATNbreColonnes == 2*/) {
+			det += CMatrice<Type>::MATLireVal(0, 0)*CMatrice<Type>::MATLireVal(1, 1) - CMatrice<Type>::MATLireVal(0, 1)*CMatrice<Type>::MATLireVal(1, 0);
+		}
+		else if (CMatrice<Type>::uiMATNbreLignes == 1 /*&& CMatrice<Type>::uiMATNbreColonnes == 1*/) {
+			det += CMatrice<Type>::MATLireVal(0, 0);
+		}
+		else if (CMatrice<Type>::uiMATNbreLignes < 1 /*&& CMatrice<Type>::uiMATNbreColonnes == 0*/) {
+			det += 0;
+		}
+		else {
+			CMatriceOperation<Type> MAOMoinsUn = CMatriceOperation<Type>::MATGetSousMatrice(CMatrice<Type>::uiMATNbreColonnes - 1, CMatrice<Type>::uiMATNbreLignes- 1);
+			CMatriceOperation<Type> MAOMoinsDeux = CMatriceOperation::MATGetSousMatrice(CMatrice<Type>::uiMATNbreColonnes - 2, CMatrice<Type>::uiMATNbreLignes - 2);
+			det += CMatrice<Type>::MATLireVal(CMatrice<Type>::uiMATNbreLignes - 1, CMatrice<Type>::uiMATNbreColonnes - 1)*MAOMoinsUn.MAODeterminantTridiagonale() - CMatrice<Type>::MATLireVal(CMatrice<Type>::uiMATNbreLignes - 2, CMatrice<Type>::uiMATNbreColonnes - 1)*CMatrice<Type>::MATLireVal(CMatrice<Type>::uiMATNbreLignes - 1, CMatrice<Type>::uiMATNbreColonnes - 2)*MAOMoinsDeux.MAODeterminantTridiagonale();
+		}
+	}
+	catch (CException &EXCLevee) {
+		std::cout << EXCLevee.EXCLireErreur() << "\n";
+	}
+	return det;
 }
 

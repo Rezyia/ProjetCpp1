@@ -10,6 +10,8 @@
 #define NBRE_MAX_CHAMPS_FICHIER 32
 #define NBRE_MAX_LIGNES_FICHIER 255
 
+#define ERROR_PARAMETRES_INCORRECTS "Les paramètres sont incorrectes"
+
 
 /**********************************************************************************
 
@@ -366,6 +368,9 @@ void CMatrice<Type>::MATModifierNbreColonnes(unsigned int uiArg) {
 
 template <class Type>
 CMatrice<Type>& CMatrice<Type>::MATGetSousMatrice(unsigned int uiNewNbCol, unsigned int uiNewNbRow) {
+	/*if (uiNewNbCol >= uiMATNbreColonnes || uiNewNbRow >= uiMATNbreLignes) {
+		throw(CException((char*)ERROR_PARAMETRES_INCORRECTS));
+	}*/
 	CMatrice<Type>* MATNewMatrice = new CMatrice(uiNewNbCol, uiNewNbRow);
 
 	for (unsigned int uiInitRow = 0; uiInitRow < uiNewNbRow; uiInitRow++) {

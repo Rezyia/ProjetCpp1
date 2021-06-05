@@ -23,4 +23,9 @@ public:
 	CMatriceOperation<Type>& operator/(Type varArg);
 
 	bool MAOIsMatriceTridiagonale();
+	Type MAODeterminantTridiagonale();
+
+
+	CMatriceOperation<Type>& MATGetSousMatrice(unsigned int uiNewNbCol, unsigned int uiNewNbRow);
+
 };

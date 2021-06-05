@@ -42,6 +42,5 @@ public:
 		return  uiMATNbreColonnes == uiMATNbreLignes;
 	}
 
-
 	CMatrice<Type>& MATGetSousMatrice(unsigned int uiNewNbCol, unsigned int uiNewNbRow);
 };

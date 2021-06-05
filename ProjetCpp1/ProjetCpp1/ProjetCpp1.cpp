@@ -13,13 +13,13 @@ int main(int argc, char* argv[]) {
 					Partie déclarations et initialisations du programme :
 
 	**********************************************************************************/
-
+	
 	// Vérification : au moins 1 argument
-	if (argc < 2) {
-		std::cout << "Erreur : veuillez mettre au moins un fichier en paramètre.\n";
+	if (argc == 2) {
+		std::cout << "Erreur : veuillez mettre un SEUL fichier en paramètre.\n";
 		exit(EXIT_FAILURE);
 	}
-
+	/*
 	// Allocation de l'array des matrices CMatriceOperation :
 	CMatriceOperation<double>** tCMatrices = (CMatriceOperation<double>**)malloc((argc-2) * sizeof(CMatriceOperation<double>*));
 
@@ -30,8 +30,16 @@ int main(int argc, char* argv[]) {
 	}
 
 	// Déclaration et Initialisation des variables :
-	double c;
-	CMatriceOperation<double>* CMatTemp = new CMatriceOperation<double>();
+	// Rien
+	*/
+ 
+	CMatriceOperation<double>* mat1 = new CMatriceOperation<double>(argv[1]);
+	//CMatriceOperation<double>* mat1 = new CMatriceOperation<double>((char*)"mTri1.txt");
+	mat1->CMatrice<double>::MATAfficher();
+
+	std::cout << "Tridiag : " << mat1->MAOIsMatriceTridiagonale() << std::endl;
+
+	std::cout << "Déterminant = " << mat1->MAODeterminantTridiagonale() << std::endl;
 
 
 	/**********************************************************************************
@@ -40,7 +48,7 @@ int main(int argc, char* argv[]) {
 
 	**********************************************************************************/
 
-
+	/*
 	// •	Demander à l’utilisateur de saisir une valeur c,
 	std::cout << "Entrez une valeur c : ";
 	std::cin >> c;
@@ -101,7 +109,7 @@ int main(int argc, char* argv[]) {
 		*CMatTemp = *CMatTemp * *tCMatrices[iBoucleCalculs];
 
 	}
-	CMatTemp->MATAfficher();
+	CMatTemp->MATAfficher();*/
 
 	/**********************************************************************************
 
